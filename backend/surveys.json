@@ -1,0 +1,104 @@
+{
+  "surveyId": 1,
+  "survey": {
+    "showCompletedPage": false,
+    "pages": [
+      {
+        "name": "page1",
+        "elements": [
+         {
+          "type": "barrating",
+          "title":"Considering both the limitations and possibilities of the subject matter and the course, how would you rate the overall effectiveness of this unit?",
+          "isRequired": true,
+          "name":"Unit General" ,
+          "choices": [
+           1,
+           2,
+           3,
+           4,
+           5,
+           6,
+           7,
+           8,
+           9,
+           10
+          ]
+         },
+         {
+          "type": "barrating",
+          "title":"How would you rate the overall effectiveness of the instructor’s teaching?",
+          "isRequired": true,
+          "name": "instructor",
+          "choices": [
+           1,
+           2,
+           3,
+           4,
+           5,
+           6,
+           7,
+           8,
+           9,
+           10
+          ]
+         }
+        ]
+       },
+       {
+        "name": "page2",
+        "elements": [
+         {
+          "type": "barrating",
+          "title":"How would you rate the overall effectiveness of lab Equipments when this particular unit was being administered (optional)?",
+          "name":"lab" ,
+          "choices": [
+           1,
+           2,
+           3,
+           4,
+           5,
+           6,
+           7,
+           8,
+           9,
+           10
+          ]
+         },
+         {
+          "type": "barrating",
+          "title":"How would you rate the classroom facilities provided by the school as per this unit?",
+          "isRequired": true,
+          "name": "classroom",
+          "choices": [
+           1,
+           2,
+           3,
+           4,
+           5,
+           6,
+           7,
+           8,
+           9,
+           10
+          ]
+         }
+        ]
+       },
+       {
+        "name": "page4",
+        "elements": [
+         {
+          "type": "rating",
+          "isRequired": true,
+          "name": "school",
+          "title": "Considering your complete experience with the school of computing and informatics, how likely would you be to recommend us to a friend or colleague?",
+          "rateMax": 10
+         }
+        ]
+       }
+    ],
+        "showProgressBar": "top"
+  }
+}
+
+

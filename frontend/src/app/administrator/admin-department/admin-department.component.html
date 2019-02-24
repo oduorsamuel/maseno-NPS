@@ -1,0 +1,20 @@
+<app-admin-nav></app-admin-nav>
+<div class="container">
+  <br>
+  <form class="form-inline" (ngSubmit)="addDepartment()" #addform="ngForm">
+    <div class="form-group">
+      <label class="sr-only">Department Id</label>
+      <input type="text" class="form-control" name="departmentId" [(ngModel)]="model.departmentId" required #departmentId="ngModel"
+        placeholder="Enter Department Id" #departmentId>
+    </div>
+
+    <div class="form-group">
+      <label class="sr-only">Department Name</label>
+      <input type="text" class="form-control" name="departmentName" [(ngModel)]="model.departmentName" required #departmentName="ngModel"
+        placeholder="Enter Department Name" #departmentName>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!addform.form.valid">Add Department</button>
+  </form>
+  <br>
+  <br>
+</div>

@@ -1,0 +1,26 @@
+<app-admin-nav></app-admin-nav>
+<div class="container">
+    <br>
+    <form class="form-inline" (ngSubmit)="addProgram()" #addform="ngForm">
+        <div class="form-group">
+            <label class="sr-only">Department code</label>
+            <select class="form-control" name="departmentId" [(ngModel)]="model.departmentId" required #departmentId="ngModel"
+               #departmentId >
+               <option *ngFor="let department of departments" [value]="department.departmentId">{{department.departmentName}}</option>
+            </select>
+          </div>
+      <div class="form-group">
+        <label class="sr-only">Program Code</label>
+        <input type="number" class="form-control" name="programId" [(ngModel)]="model.programId" required #programId="ngModel"
+          placeholder="Enter Program Code" #ProgramId>
+      </div>
+      <div class="form-group">
+        <label class="sr-only">Program Name</label>
+        <input type="text" class="form-control" name="programName" [(ngModel)]="model.programName" required #programName="ngModel"
+          placeholder="Enter Program Name" #ProgramName>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!addform.form.valid">Add Program</button>
+    </form>
+    <br>
+    <br>
+  </div>

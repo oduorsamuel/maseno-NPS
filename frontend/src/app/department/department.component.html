@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="input-group" style="margin-left: 1em">      
+      <select id="exampleFormControlSelect1" #location>
+        <option selected disabled>Select Department</option>
+        <option *ngFor="let location of locationArray">{{ location.name }}</option>
+      </select>
+      <span>
+        <button type="button" (click)="onSave(location.value)" class="btn btn-md">Save</button>
+      </span>
+    </div>
+  </div>
+</div>
