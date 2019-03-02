@@ -19,7 +19,7 @@ const appRoutes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'dashboard'
+    redirectTo: 'login'
   },
   {
     path: 'login',
@@ -53,16 +53,19 @@ const appRoutes = [
   {
     path: 'admindepartment',
     component: AdminDepartmentComponent,
+    canActivate: [AuthGuard]
     
   },
   {
     path: 'adminUnit',
     component: AdminUnitComponent,
+    canActivate: [AuthGuard]
     
   },
   {
     path: 'adminProgram',
     component: AdminProgramComponent,
+    canActivate: [AuthGuard]
     
   },
   {

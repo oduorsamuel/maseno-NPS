@@ -1,14 +1,8 @@
-<app-admin-nav></app-admin-nav>
+
 <div class="container">
+    <div style="color: green" *ngIf="showAlert">Program Added Successfully</div>
     <br>
     <form class="form-inline" (ngSubmit)="addUnit()" #addform="ngForm">
-      <div class="form-group">
-        <label class="sr-only">Program Code</label>
-        <select class="form-control" name="programId" [(ngModel)]="model.programId" required #programId="ngModel" placeholder="Enter program code"
-          #programId>
-          <option *ngFor="let program of programs" [value]="program.programId">{{program.programName}}</option>
-        </select>
-      </div>
       <div class="form-group">
         <label class="sr-only">Unit Code</label>
         <input type="text" class="form-control" name="unitCode" [(ngModel)]="model.unitCode" required #unitName="ngModel" placeholder="Enter Unit code"

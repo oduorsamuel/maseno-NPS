@@ -16,5 +16,8 @@
     "mysql": "^2.15.0",
     "bcrypt": "^2.0.1",
     "request": "^2.87.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
   }
 }

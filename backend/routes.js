@@ -40,27 +40,137 @@ const surveyEncounter_query_constructor = (surveyEncounterInfo) => {
   return surveyEncounter_query;
 };
 
+
+  
+  
+
+
 const MOCK_LOCATIONS = [{uuid:1, name:"Information Technology"},
                         {uuid:2, name:"Computer Science"},];
 
 
 module.exports = { routesFxn: (connection, validate) => [
+  //Post Request
+  {
+    method: 'POST',
+    path: '/department',
+    handler: (request, h) => {
+        let departmentId = request.payload.departmentId;
+        let departmentName = request.payload.departmentName;
+        return new Promise(
+            (res, reject) => {
+
+                connection.query("INSERT INTO departments(departmentId, departmentName) VALUES ('" + departmentId + "','" + departmentName + "')", (err, result, fields) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    if (result) {
+                        res({ "success": "Submission is successful" });
+                    } else {
+                        res({ "Failure": "Submission error" });
+                    }
+                });
+            }
+        );
+    }},
+    {
+      method:'post',
+      path:'/program',
+      handler:(request, h)=>{
+        let programId=request.payload.programId;
+        let programName=request.payload.programName;
+        return new Promise(
+          (res, reject)=>{
+          connection.query("insert into programs(programId, ProgramName) VALUES('"+programId+"','"+programName+"')",(err,result,fields)=>{
+            if(err){
+              reject(err);
+            }
+            if(result){
+              res({ "Success":"Submission Successful"});
+            }
+            else{
+              res({"Failure":"An error occured during submission"});
+            }
+          })
+          }
+        );
+      }
+    },
+    {
+      method:'post',
+      path:'/unit',
+      handler:(request, h)=>{
+        let unitCode=request.payload.unitCode;
+        let unitName=request.payload.unitName;
+        return new Promise(
+          (res, reject)=>{
+            connection.query("insert into units(unitCode, unitName) VALUES('"+unitCode+"','"+unitName+"')",(err,result,fields)=>{
+              if(err){
+                reject(err);
+              }
+              if(result){
+                res({"Success":"Submission successful"})
+              }
+              else{
+                res({"Failure":"Submission Unsuccessful"})
+              }
+            })
+          }
+        );
+      }
+    },
+
+    //Get Requests
   {
     method: 'GET',
     path: '/departments',
     handler: (request, h) => {
-        const results=[];
-        connection.query('SELECT * FROM departments', function (Error, results) {
-            if (Error) {
-                console.log(Error);
-                return Error;
+
+        return new Promise(
+            (res, reject) => {
+                connection.query("select * from departments", (err, result, fields) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    res(JSON.stringify(result));
+                });
             }
-             console.log(JSON.stringify(results));  
-          });
-          return JSON.stringify(results);
-          
-                
+        );
     }},
+
+    {
+     method:'get',
+     path:'/programs',
+    handler: (request, h)=>{
+           return new Promise(
+            (res, reject)=>{
+              connection.query("select * from programs", (err,result,fields)=>{
+                if(err){
+                  reject(err);
+                }
+                res(result);
+              })
+            }
+           );   
+    }
+    },
+
+    {
+      method:'get',
+      path:'/units',
+      handler:(request,h)=>{
+        return new Promise(
+          (res, reject)=>{
+            connection.query("select * from units",(err, result,fields)=>{
+              if(err){
+                reject(err);
+              }
+              res(result);
+            })
+          }
+        );
+      }
+    },
 
 {
   method: 'GET',

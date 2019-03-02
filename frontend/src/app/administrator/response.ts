@@ -1,6 +1,6 @@
 export class Attributes {
 
-    constructor(public unitCode:String,public unitName:String, public programId:any){}
+    constructor(public unitCode:String,public unitName:String,){}
 }
 
 export class Departments {
@@ -9,7 +9,7 @@ export class Departments {
 }
 
 export class Programs {
-    constructor(public departmentId:any,public programId:any,public programName:String,){}
+    constructor(public programId:any,public programName:String,){}
 }
 
 export class AcademicYears {

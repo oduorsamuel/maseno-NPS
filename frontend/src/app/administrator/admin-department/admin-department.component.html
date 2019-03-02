@@ -1,5 +1,6 @@
-<app-admin-nav></app-admin-nav>
+
 <div class="container">
+  <div style="color: green" *ngIf="showAlert">Department Added Successfully</div>
   <br>
   <form class="form-inline" (ngSubmit)="addDepartment()" #addform="ngForm">
     <div class="form-group">

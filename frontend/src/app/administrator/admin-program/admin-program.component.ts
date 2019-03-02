@@ -9,17 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-program.component.css']
 })
 export class AdminProgramComponent implements OnInit {
-  model = {programId:'', programName:'',departmentId:''}
+  showAlert=false;
+  model = {programId:'', programName:''}
   constructor(private adminservice:AdminService, private router:Router) { }
 
   ngOnInit() {
   }
   addProgram(){
     this.adminservice.addProgram(this.model).subscribe(
-      (data:Programs)=>{
-       if(data!=null)
-       console.log(data);
-       this.router.navigate(['/update']);
+      (Programs)=>{
+       if(Programs!=null)
+       console.log(Programs);
+       this.showAlert=true
        },
        function (error){console.log("error"+error)},
        function(){console.log("subscription done")}

@@ -9,24 +9,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-department.component.css']
 })
 export class AdminDepartmentComponent implements OnInit {
+showAlert = false;
 model={departmentId:'', departmentName:'',}
 
   constructor(private adminservice:AdminService, private router:Router) { }
 
   ngOnInit() {
+    this.getDepartments();
   }
 
   addDepartment(){
     this.adminservice.addDepartment(this.model).subscribe(
-      (data:Departments)=>{
-       if(data!=null)
-       console.log(data);
-       this.router.navigate(['/update']);
+      (departments)=>{
+       if(departments!=null)
+       console.log(departments);
+       this.showAlert = true;
        },
        function (error){console.log("error"+error)},
        function(){console.log("subscription done")}
     );
 
+}
+
+getDepartments(){
+  return this.adminservice.getDepartments().subscribe((results)=>{
+    console.log(results)
+  })
 }
 
 }

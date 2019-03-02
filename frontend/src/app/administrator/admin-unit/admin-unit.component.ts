@@ -9,6 +9,7 @@ import {Router} from '@angular/router'
   styleUrls: ['./admin-unit.component.css']
 })
 export class AdminUnitComponent implements OnInit {
+  showAlert=false;
   model={unitCode:'',unitName:'',programId:''}
   constructor(private adminservice:AdminService, private router:Router) { }
 
@@ -17,10 +18,10 @@ export class AdminUnitComponent implements OnInit {
 
   addUnit(){
     this.adminservice.addUnit(this.model).subscribe(
-      (data:Attributes)=>{
-       if(data!=null)
-       console.log(data);
-       this.router.navigate(['/dashboard']);
+      (units)=>{
+       if(units!=null)
+       console.log(units);
+       this.showAlert=true
        },
        function (error){console.log("error"+error)},
        function(){console.log("subscription done")}

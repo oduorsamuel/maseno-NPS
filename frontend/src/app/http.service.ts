@@ -23,6 +23,23 @@ export class HttpService {
             headers: this.getCredentials()
           });
     }
+    getDepartments(){
+        return this.http.get(BASEURL + 'departments',{
+            headers: this.getCredentials()
+        })
+    }
+
+    getPrograms(){
+        return this.http.get(BASEURL + 'programs',{
+            headers:this.getCredentials()
+        })
+    }
+
+    getUnits(){
+        return this.http.get(BASEURL + 'units',{
+            headers:this.getCredentials()
+        })
+    }
     storeSurveys(response) {
         return this.http.post(BASEURL + 'storeSurveys', response, {
             headers: this.getCredentials()

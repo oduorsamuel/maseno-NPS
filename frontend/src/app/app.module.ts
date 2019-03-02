@@ -22,7 +22,6 @@ import { AdminDepartmentComponent } from './administrator/admin-department/admin
 import { AdminProgramComponent } from './administrator/admin-program/admin-program.component';
 import { AdminUnitComponent } from './administrator/admin-unit/admin-unit.component';
 import { AdminService } from './administrator/admin.service';
-import { AdminNavComponent } from './administrator/admin-nav/admin-nav.component';
 import { DashboardComponent } from './administrator/dashboard/dashboard.component';
 
 
@@ -40,7 +39,6 @@ import { DashboardComponent } from './administrator/dashboard/dashboard.componen
     AdminDepartmentComponent,
     AdminProgramComponent,
     AdminUnitComponent,
-    AdminNavComponent,
     DashboardComponent,
   ],
   imports: [

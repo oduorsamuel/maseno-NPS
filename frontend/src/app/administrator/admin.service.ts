@@ -1,39 +1,41 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map';
-import {Http, RequestOptions,Headers,Response} from '@angular/http';
-import {Attributes,Departments,Programs,AcademicYears} from './response';
+import { Http, Headers } from '@angular/http';
+import { Departments } from './response';
+const url="http://localhost:3000/";
 
 @Injectable()
 export class AdminService {
-url="http://localhost:3000";
+ 
 
   constructor(private http:Http) { }
-  addDepartment(item:Departments){
-    let body = JSON.stringify(item);
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.post(`${this.url}/department`,
-                  body, options)
-                 .map((response:Response)=>response.json());
+  getCredentials() {
+    const headers = new Headers();
+    const credentials = sessionStorage.getItem('auth.credentials');
+    headers.append('Authorization', 'Basic ' + credentials);
+    return headers;
+}
+  addDepartment(departments){
+    return this.http.post(url + 'department',departments, {
+      headers: this.getCredentials()
+    });
+                 
 }
 
-addProgram(item:Programs){
-  let body = JSON.stringify(item);
-  let headers = new Headers({ 'Content-Type': 'application/json' });
-  let options = new RequestOptions({ headers: headers });
-  return this.http.post(`${this.url}/program`,
-                body, options)
-               .map((response:Response)=>response.json());
+addProgram(programs){
+  return this.http.post(url +'program', programs,{
+    headers: this.getCredentials()
+  });
+ 
 }
 
-addUnit(item:Attributes){
-  let body = JSON.stringify(item);
-  let headers = new Headers({ 'Content-Type': 'application/json' });
-  let options = new RequestOptions({ headers: headers });
-  return this.http.post(`${this.url}/unit`,
-                body, options)
-               .map((response:Response)=>response.json());
-              }
-
+addUnit(units){
+ return this.http.post(url + 'unit', units,{
+   headers:this.getCredentials()
+ })
+  }
+getDepartments(){
+  return this.http.get(url + 'departments',{
+    headers:this.getCredentials()
+  })
+}
 }
