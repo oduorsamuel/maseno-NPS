@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="input-group" style="margin-left: 1em">      
+      <select id="exampleFormControlSelect1" #year>
+        <option selected disabled>Select Year of Study</option>
+        <option value="1">Year One</option>
+        <option value="2">Year Two</option>
+        <option value="3">Year Three</option>
+        <option value="4">Year Four</option>
+      </select>
+      <span>
+        <button type="button" (click)="onSave(year.value)" class="btn btn-md">Next</button>
+      </span>
+    </div>
+  </div>
+</div>

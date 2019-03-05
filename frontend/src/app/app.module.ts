@@ -23,6 +23,10 @@ import { AdminProgramComponent } from './administrator/admin-program/admin-progr
 import { AdminUnitComponent } from './administrator/admin-unit/admin-unit.component';
 import { AdminService } from './administrator/admin.service';
 import { DashboardComponent } from './administrator/dashboard/dashboard.component';
+import { YearComponent } from './year/year.component';
+import { SemesterComponent } from './semester/semester.component';
+import { SchoolComponent } from './graphs/school/school.component';
+import { LabComponent } from './graphs/lab/lab.component';
 
 
 @NgModule({
@@ -40,6 +44,10 @@ import { DashboardComponent } from './administrator/dashboard/dashboard.componen
     AdminProgramComponent,
     AdminUnitComponent,
     DashboardComponent,
+    YearComponent,
+    SemesterComponent,
+    SchoolComponent,
+    LabComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="input-group" style="margin-left: 1em">      
+      <select id="exampleFormControlSelect1" #semester>
+        <option selected disabled>Select semester</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+      </select>
+      <span>
+        <button type="button" (click)="onSave(semester.value)" class="btn btn-md">Next</button>
+      </span>
+    </div>
+  </div>
+</div>

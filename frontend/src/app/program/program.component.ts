@@ -9,29 +9,32 @@ import { Response } from '@angular/http';
   styleUrls: ['./program.component.css']
 })
 export class ProgramComponent implements OnInit {
-locationArray: {'uuid': string, 'name': string}[];
+programArray: {'programId': string, 'programName': string}[];
 
   constructor(private router: Router,
     private httpService: HttpService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.httpService.getLocations().subscribe(
-      (response: Response) => {
-        this.locationArray = response.json();
-      });
+   this.getPrograms();
   }
-  onSave(location) {
-    const surveyId = 1;
-    if (location !== 'Select Program') {
-      let uuid;
-      for (const loc of this.locationArray) {
-        if (loc.name === location) {
-          uuid = loc.uuid;
+  onSave(program) {
+    if (program !== 'Select program') {
+      let programId;
+      for (const loc of this.programArray) {
+        if (loc.programName === program) {
+          programId = loc.programId;
         }
       }
-      this.router.navigate([uuid + '/survey/' + surveyId + '/welcome'], { relativeTo: this.route });
+      this.router.navigate([programId + '/year'], { relativeTo: this.route });
+      // this.router.navigate([programId + '/survey/' + surveyId + '/welcome'], { relativeTo: this.route });
     }
+  }
+
+  getPrograms(){
+    return this.httpService.getPrograms().subscribe((response: Response)=>{
+         this.programArray=response.json();
+    })
   }
 
 }

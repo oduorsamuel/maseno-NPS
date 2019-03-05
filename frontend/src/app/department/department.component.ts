@@ -9,29 +9,32 @@ import { Response } from '@angular/http';
   styleUrls: ['./department.component.css']
 })
 export class DepartmentComponent implements OnInit {
- locationArray: {'uuid': string, 'name': string}[];
+ departmentArray: {'departmentId': string, 'departmentName': string}[];
 
   constructor(private router: Router,
     private httpService: HttpService,
     private route: ActivatedRoute) { }
 
-    onSave(location) {
-      if (location !== 'Select Department') {
-        let uuid;
-        for (const loc of this.locationArray) {
-          if (loc.name === location) {
-            uuid = loc.uuid;
+    onSave(department) {
+      if (department !== 'Select Department') {
+        let departmentId;
+        for (const loc of this.departmentArray) {
+          if (loc.departmentName === department) {
+            departmentId = loc.departmentId;
           }
         }
-        this.router.navigate([uuid + '/program'], { relativeTo: this.route });
+        this.router.navigate([departmentId + '/program'], { relativeTo: this.route });
       }
     }
 
   ngOnInit() {
-    this.httpService.getLocations().subscribe(
-      (response: Response) => {
-        this.locationArray = response.json();
-      });
+      this.getDepartments();
   }
-
+getDepartments(){
+  return this.httpService.getDepartments().subscribe(
+    (response:Response)=>{
+      this.departmentArray=response.json();
+    }
+  )
+}
 }

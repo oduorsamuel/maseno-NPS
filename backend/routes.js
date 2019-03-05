@@ -171,6 +171,23 @@ module.exports = { routesFxn: (connection, validate) => [
         );
       }
     },
+    {
+      method:'delete',
+      path:'/departments{departmentId}',
+      handler:(request,h)=>{
+        let departmentId=request.params.departmentId;
+        return new Promise(
+          (res, reject)=>{
+            connection.query('DELETE FROM departments WHERE departmentId = "' + departmentId + '"',(err, result,fields)=>{
+              if(err){
+                reject(err);
+              }
+              res(result);
+            })
+          }
+        );
+      }
+    },
 
 {
   method: 'GET',

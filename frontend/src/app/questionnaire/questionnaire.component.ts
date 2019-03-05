@@ -27,12 +27,12 @@ export class QuestionnaireComponent implements OnInit {
 
     this.route.params.subscribe((params) => {
       const encounterInfo = {
-        'departmentId': params.location,
+        'departmentId':params.department,
         'date': date,
-        'semester': 1,
-        'unitCode': 1,
-        'yearOfStudy': 1,
-        'programId': params.location,
+        'semester':params.semester,
+        'unitCode':params.unit,
+        'yearOfStudy':params.year,
+        'programId': params.program,
       };
       const toServer = {
         'encounterInfo': encounterInfo,

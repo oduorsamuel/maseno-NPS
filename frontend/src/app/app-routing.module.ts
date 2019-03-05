@@ -14,6 +14,9 @@ import { ProgramComponent } from './program/program.component';
 import { AdminUnitComponent } from './administrator/admin-unit/admin-unit.component';
 import { AdminProgramComponent } from './administrator/admin-program/admin-program.component';
 import { DashboardComponent } from './administrator/dashboard/dashboard.component';
+import { YearComponent } from './year/year.component';
+import { SemesterComponent } from './semester/semester.component';
+import { UnitComponent } from './unit/unit.component';
 
 const appRoutes = [
   {
@@ -36,17 +39,32 @@ const appRoutes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'department/:location/program/:location/survey/:surveyId/welcome',
+    path: 'department/:department/program/:program/year',
+    component: YearComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'department/:department/program/:program/year/:year/semester',
+    component: SemesterComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'department/:department/program/:program/year/:year/semester/:semester/unit',
+    component: UnitComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'department/:department/program/:program/year/:year/semester/:semester/unit/:unit/survey/:surveyId/welcome',
     component: WelcomeComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'department/:location/program/:location/survey/:surveyId/start',
+    path: 'department/:department/program/:program/year/:year/semester/:semester/unit/:unit/survey/:surveyId/start',
     component: QuestionnaireComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'department/:location/program/:location/survey/:surveyId/success',
+    path: 'department/:department/program/:program/year/:year/semester/:semester/unit/:unit/survey/:surveyId/success',
     component: SuccessComponent
   },
 

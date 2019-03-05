@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="input-group" style="margin-left: 1em">      
-      <select id="exampleFormControlSelect1" #location>
+      <select id="exampleFormControlSelect1" #program>
         <option selected disabled>Select program</option>
-        <option *ngFor="let location of locationArray">{{ location.name }}</option>
+        <option *ngFor="let program of programArray">{{ program.programName }}</option>
       </select>
       <span>
-        <button type="button" (click)="onSave(location.value)" class="btn btn-md">Save</button>
+        <button type="button" (click)="onSave(program.value)" class="btn btn-md">Next</button>
       </span>
     </div>
   </div>
