@@ -29,6 +29,12 @@ export class HttpService {
         })
     }
 
+    getSchool(){
+        return this.http.get(BASEURL + 'school',{
+            headers: this.getCredentials()
+        })
+    }
+
     getPrograms(){
         return this.http.get(BASEURL + 'programs',{
             headers:this.getCredentials()

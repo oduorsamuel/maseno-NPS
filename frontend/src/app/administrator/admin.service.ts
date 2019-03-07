@@ -50,7 +50,7 @@ getPrograms(){
   })
 }
 deleteDepartment(departmentId){
-  return this.http.delete(url + 'departments${departmentId}',{
+  return this.http.delete(url + `departments${departmentId}`,{
     headers:this.getCredentials()
   })
 }

@@ -40,15 +40,6 @@ const surveyEncounter_query_constructor = (surveyEncounterInfo) => {
   return surveyEncounter_query;
 };
 
-
-  
-  
-
-
-const MOCK_LOCATIONS = [{uuid:1, name:"Information Technology"},
-                        {uuid:2, name:"Computer Science"},];
-
-
 module.exports = { routesFxn: (connection, validate) => [
   //Post Request
   {
@@ -175,10 +166,9 @@ module.exports = { routesFxn: (connection, validate) => [
       method:'delete',
       path:'/departments{departmentId}',
       handler:(request,h)=>{
-        let departmentId=request.params.departmentId;
         return new Promise(
           (res, reject)=>{
-            connection.query('DELETE FROM departments WHERE departmentId = "' + departmentId + '"',(err, result,fields)=>{
+            connection.query('DELETE FROM departments WHERE departmentId = ?',[request.payload.departmentId],(err, result,fields)=>{
               if(err){
                 reject(err);
               }
@@ -194,13 +184,6 @@ module.exports = { routesFxn: (connection, validate) => [
   path: '/getSurveys',
   handler: function(request, h) { 
     return h.file(SURVEYFILE);
-  }
-},
-{
-  method: 'GET',
-  path: '/getLocations',
-  handler: function(request, h) { 
-    return MOCK_LOCATIONS;
   }
 },
 {
@@ -234,6 +217,26 @@ module.exports = { routesFxn: (connection, validate) => [
     );
   }
 },
+
+//survey Query
+{
+  method:'get',
+  path:'/school',
+ handler: (request, h)=>{
+        return new Promise(
+         (res, reject)=>{
+           connection.query("SELECT * FROM `studentresponse` WHERE `question` ='school'", (err,result,fields)=>{
+             if(err){
+               reject(err);
+             }
+             res(result);
+             res(result.length);
+           })
+         }
+        );   
+ }
+ },
+
 {
   method: 'POST',
   path: '/login',

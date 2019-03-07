@@ -27,6 +27,7 @@ import { YearComponent } from './year/year.component';
 import { SemesterComponent } from './semester/semester.component';
 import { SchoolComponent } from './graphs/school/school.component';
 import { LabComponent } from './graphs/lab/lab.component';
+import { AdminLoginComponent } from './administrator/admin-login/admin-login.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { LabComponent } from './graphs/lab/lab.component';
     SemesterComponent,
     SchoolComponent,
     LabComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,

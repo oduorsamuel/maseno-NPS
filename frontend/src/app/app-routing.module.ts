@@ -17,6 +17,8 @@ import { DashboardComponent } from './administrator/dashboard/dashboard.componen
 import { YearComponent } from './year/year.component';
 import { SemesterComponent } from './semester/semester.component';
 import { UnitComponent } from './unit/unit.component';
+import { AdminLoginComponent } from './administrator/admin-login/admin-login.component';
+import { SchoolComponent } from './graphs/school/school.component';
 
 const appRoutes = [
   {
@@ -27,6 +29,10 @@ const appRoutes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'admin',
+    component: AdminLoginComponent
   },
   {
     path: 'department',
@@ -89,6 +95,13 @@ const appRoutes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard]
+    
+  },
+
+  {
+    path: 'school',
+    component: SchoolComponent,
     canActivate: [AuthGuard]
     
   },
