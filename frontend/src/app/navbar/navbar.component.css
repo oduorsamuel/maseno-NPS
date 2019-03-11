@@ -1,0 +1,16 @@
+.navbar
+{
+    border:5px solid #4ca973;
+}
+
+li { color: #ffffff;
+    font-family: 'Trocchi', serif;
+     font-size: 15px;
+    font-weight: normal;
+    line-height: 38px; margin: 0; }
+
+    .navbar-brand { color: #ffffff;
+        font-family: 'Trocchi', serif;
+         font-size: 15px;
+        font-weight: normal;
+        line-height: 38px; margin: 0; }

@@ -66,9 +66,9 @@ body {
     }
   }
   #logo {
-    height: 5x;
+    height: 100px;
     width: 250px;
     margin: 0 auto;
-    /* background: url('../../assets/logo.png') no-repeat center center; */
+    background: url('../../../assets/logo.png') no-repeat center center;
     background-size: contain;
   }

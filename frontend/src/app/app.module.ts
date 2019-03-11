@@ -28,6 +28,8 @@ import { SemesterComponent } from './semester/semester.component';
 import { SchoolComponent } from './graphs/school/school.component';
 import { LabComponent } from './graphs/lab/lab.component';
 import { AdminLoginComponent } from './administrator/admin-login/admin-login.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AdminNavComponent } from './administrator/admin-nav/admin-nav.component';
 
 
 @NgModule({
@@ -50,6 +52,8 @@ import { AdminLoginComponent } from './administrator/admin-login/admin-login.com
     SchoolComponent,
     LabComponent,
     AdminLoginComponent,
+    NavbarComponent,
+    AdminNavComponent,
   ],
   imports: [
     BrowserModule,

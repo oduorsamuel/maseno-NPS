@@ -1,3 +1,11 @@
-<p>
-  school works!
-</p>
+<app-admin-nav></app-admin-nav>
+<br>
+<div style="text-align:center">
+    <strong >Graph showing how likely student would recommend School of Computing to a friend or colleague</strong>
+</div>
+<br>
+<div class="margin">
+    <div class="center" *ngIf="chart">
+        <canvas id="canvas">{{chart}}</canvas>
+      </div>
+    </div>
