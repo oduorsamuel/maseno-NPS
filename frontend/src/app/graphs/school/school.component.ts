@@ -48,19 +48,19 @@ public total_response;
     var response_difference=number_of_promoters-number_of_detractors;
     console.log(response_difference);
 
-    var percentage=response_difference*100/this.total_response;
-    var nps = Math.trunc( percentage );
+    var nps=response_difference*100/this.total_response;
+    // var nps = Math.trunc( percentage );
     console.log(nps);
 
     // Graphical representation of NPS
     this.chart= new Chart ('canvas',{
       type:'bar',
       data:{
-        labels:[2018,2019],
+        labels:[2019,2020],
         datasets:[
           {
-          data:[nps],
-          label:'score',
+          data:[nps,0],
+          label:'score%',
           borderColor:'#3aaa9f',
           backgroundColor:'#ff4081',
           fill: false

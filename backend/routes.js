@@ -164,11 +164,48 @@ module.exports = { routesFxn: (connection, validate) => [
     },
     {
       method:'delete',
-      path:'/departments{departmentId}',
+      path:'/departments/{departmentId}',
       handler:(request,h)=>{
+        const departmentId = request.params.departmentId;
         return new Promise(
           (res, reject)=>{
-            connection.query('DELETE FROM departments WHERE departmentId = ?',[request.payload.departmentId],(err, result,fields)=>{
+            connection.query('DELETE FROM departments WHERE departmentId = ?',[request.params.departmentId],(err, result,fields)=>{
+              if(err){
+                reject(err);
+              }
+              res(result);
+            })
+          }
+        );
+      }
+    },
+
+    {
+      method:'delete',
+      path:'/programs/{programId}',
+      handler:(request,h)=>{
+        const programId = request.params.programId;
+        return new Promise(
+          (res, reject)=>{
+            connection.query('DELETE FROM programs WHERE programId = ?',[request.params.programId],(err, result,fields)=>{
+              if(err){
+                reject(err);
+              }
+              res(result);
+            })
+          }
+        );
+      }
+    },
+
+    {
+      method:'delete',
+      path:'/units/{unitCode}',
+      handler:(request,h)=>{
+        const unitCode = request.params.unitCode;
+        return new Promise(
+          (res, reject)=>{
+            connection.query('DELETE FROM units WHERE unitCode= ?',[request.params.unitCode],(err, result,fields)=>{
               if(err){
                 reject(err);
               }
@@ -221,6 +258,22 @@ module.exports = { routesFxn: (connection, validate) => [
 //survey Query
 {
   method:'get',
+  path:'/studentResponse',
+ handler: (request, h)=>{
+        return new Promise(
+         (res, reject)=>{
+           connection.query("SELECT * FROM `studentresponse` WHERE `question` ='question1'", (err,result,fields)=>{
+             if(err){
+               reject(err);
+             }
+             res(result);
+           })
+         }
+        );   
+ }
+ },
+{
+  method:'get',
   path:'/school',
  handler: (request, h)=>{
         return new Promise(
@@ -230,12 +283,62 @@ module.exports = { routesFxn: (connection, validate) => [
                reject(err);
              }
              res(result);
-             res(result.length);
            })
          }
         );   
  }
  },
+ {
+   method:'get',
+   path:'/lab',
+   handler:(req, h)=>{
+     return new Promise(
+      (res, reject)=>{
+        connection.query("SELECT * FROM `studentresponse` WHERE `question` ='lab'", (err,result,fields)=>{
+          if(err){
+            reject(err)
+          }
+          res(result)
+        })
+      } 
+     )
+   }
+ },
+
+ {
+  method:'get',
+  path:'/classroom',
+  handler:(req, h)=>{
+    return new Promise(
+     (res, reject)=>{
+       connection.query("SELECT * FROM `studentresponse` WHERE `question` ='classroom'", (err,result,fields)=>{
+         if(err){
+           reject(err)
+         }
+         res(result)
+       })
+     } 
+    )
+  }
+},
+
+ {
+  method:'get',
+  path:'/dept',
+  handler:(req, h)=>{
+    return new Promise(
+     (res, reject)=>{
+       connection.query("SELECT * FROM `encounter` JOIN `studentResponse` on studentResponse.surveyEncounter_surveyEncounterId=encounter.surveyEncounterId WHERE departmentId=2", (err,result,fields)=>{
+         if(err){
+           reject(err)
+         }
+         res(result)
+        //  console.log(JSON.stringify(result));
+       })
+     } 
+    )
+  }
+},
 
 {
   method: 'POST',

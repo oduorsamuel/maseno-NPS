@@ -30,6 +30,7 @@ import { LabComponent } from './graphs/lab/lab.component';
 import { AdminLoginComponent } from './administrator/admin-login/admin-login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminNavComponent } from './administrator/admin-nav/admin-nav.component';
+import { ClassroomComponent } from './graphs/classroom/classroom.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { AdminNavComponent } from './administrator/admin-nav/admin-nav.component
     AdminLoginComponent,
     NavbarComponent,
     AdminNavComponent,
+    ClassroomComponent,
   ],
   imports: [
     BrowserModule,

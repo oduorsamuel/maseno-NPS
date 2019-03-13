@@ -19,6 +19,7 @@ const validate = async (_request, username, password) => {
   return new Promise(
     (resolve, reject) => {
       if (username === 'sam') resolve({isValid: true, credentials: {}})
+      if (password === 'sam') resolve({isValid: true, credentials: {}})
       else resolve({isValid: false, credentials: {}})});
   };
 

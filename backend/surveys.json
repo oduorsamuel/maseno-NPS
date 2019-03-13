@@ -25,6 +25,18 @@
           ]
          },
          {
+      "title":"Briefly give us your views  based on your response",
+      "isRequired": true,
+      "type": "comment",
+      "name": "unit General comment"
+        }
+        ]
+       },
+
+      {
+        "name": "page2",
+        "elements": [
+          {
           "type": "barrating",
           "title":"How would you rate the overall effectiveness of the instructor’s teaching?",
           "isRequired": true,
@@ -41,11 +53,18 @@
            9,
            10
           ]
-         }
+         },
+         {
+      "title":"Briefly give reason for the rating provided",
+      "isRequired": true,
+      "type": "comment",
+      "name": "instructor comment"
+        }
         ]
        },
+
        {
-        "name": "page2",
+        "name": "page3",
         "elements": [
          {
           "type": "barrating",
@@ -65,6 +84,18 @@
           ]
          },
          {
+      "title":"Give a brief Recomendation",
+      "type": "comment",
+      "name": "lab comment"
+        }
+        ]
+       },
+
+
+       {
+        "name": "page4",
+        "elements": [
+          {
           "type": "barrating",
           "title":"How would you rate the classroom facilities provided by the school as per this unit?",
           "isRequired": true,
@@ -81,11 +112,18 @@
            9,
            10
           ]
-         }
+         },
+         {
+      "title":"Give your Reasons",
+      "isRequired": true,
+      "type": "comment",
+      "name": "classroom comment"
+        }
         ]
        },
+
        {
-        "name": "page4",
+        "name": "page5",
         "elements": [
          {
           "type": "rating",

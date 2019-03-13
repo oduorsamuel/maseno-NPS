@@ -62,6 +62,6 @@ nav a.active {
 
 .footer {
   position: fixed;
-  bottom: 0;
+  bottom: 1em;
   width: 100%;
 }

@@ -9,11 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-program.component.css']
 })
 export class AdminProgramComponent implements OnInit {
+  public programs;
   showAlert=false;
   model = {programId:'', programName:''}
   constructor(private adminservice:AdminService, private router:Router) { }
 
   ngOnInit() {
+    this.getPrograms();
   }
   addProgram(){
     this.adminservice.addProgram(this.model).subscribe(
@@ -26,6 +28,17 @@ export class AdminProgramComponent implements OnInit {
        function(){console.log("subscription done")}
     );
 
+}
+getPrograms(){
+  return this.adminservice.getPrograms().subscribe((result)=>{
+   this.programs=result.json();
+  })
+}
+
+deleteprogram(programId){
+  return this.adminservice.deleteProgram(programId).subscribe(()=>{
+    this.getPrograms()
+  })
 }
 
 }

@@ -9,11 +9,13 @@ import {Router} from '@angular/router'
   styleUrls: ['./admin-unit.component.css']
 })
 export class AdminUnitComponent implements OnInit {
+  public units;
   showAlert=false;
   model={unitCode:'',unitName:'',programId:''}
   constructor(private adminservice:AdminService, private router:Router) { }
 
   ngOnInit() {
+    this.getUnits();
   }
 
   addUnit(){
@@ -27,5 +29,17 @@ export class AdminUnitComponent implements OnInit {
        function(){console.log("subscription done")}
     );
   }
+
+getUnits(){
+  return this.adminservice.getUnits().subscribe((results)=>{
+    this.units=results.json();
+  })
+}
+
+deleteUnit(unitCode){
+  return this.adminservice.deleteUnit(unitCode).subscribe(()=>{
+    this.getUnits();
+  })
+}
 
 }

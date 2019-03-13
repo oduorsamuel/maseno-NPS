@@ -23,7 +23,7 @@ export class AdminLoginComponent {
       } else {
         this.showAlert = true;
       }
-      this.router.navigate(['../dashboard']);
+      this.router.navigate(['../school']);
     };
 
     this.httpService.login({ username, password }).subscribe(

@@ -1,5 +1,33 @@
 <app-admin-nav></app-admin-nav>
 <div class="container">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Unit Code</th>
+        <th>Unit Name</th>
+        <th>Action</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let unit of units">
+        <td>{{unit.unitCode}}</td>
+        <td>{{unit.unitName}}</td>
+        <td>
+          <a routerLink="/units" style="color:blue;">Edit</a>
+        </td>
+        <td>
+          <a (click)='deleteUnit(unit.unitCode)' type="button" style="color: red" aria-label="Left Align">
+ 
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+             
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+<div class="container">
     <div style="color: green" *ngIf="showAlert">Program Added Successfully</div>
     <br>
     <form class="form-inline" (ngSubmit)="addUnit()" #addform="ngForm">
@@ -13,7 +41,7 @@
         <input type="text" class="form-control" name="unitName" [(ngModel)]="model.unitName" required #unitName="ngModel" placeholder="Enter Unit Name"
           #unitName>
       </div>
-      <button type="submit" class="btn btn-success" [disabled]="!addform.form.valid">Add Unit</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!addform.form.valid">Add Unit</button>
     </form>
     <br>
     <br>

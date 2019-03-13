@@ -19,12 +19,14 @@ import { SemesterComponent } from './semester/semester.component';
 import { UnitComponent } from './unit/unit.component';
 import { AdminLoginComponent } from './administrator/admin-login/admin-login.component';
 import { SchoolComponent } from './graphs/school/school.component';
+import { LabComponent } from './graphs/lab/lab.component';
+import { ClassroomComponent } from './graphs/classroom/classroom.component';
 
 const appRoutes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login'
+    redirectTo: 'admin'
   },
   {
     path: 'login',
@@ -102,6 +104,18 @@ const appRoutes = [
   {
     path: 'school',
     component: SchoolComponent,
+    canActivate: [AuthGuard]
+    
+  },
+  {
+    path: 'lab',
+    component: LabComponent,
+    canActivate: [AuthGuard]
+    
+  },
+  {
+    path: 'classroom',
+    component: ClassroomComponent,
     canActivate: [AuthGuard]
     
   },
