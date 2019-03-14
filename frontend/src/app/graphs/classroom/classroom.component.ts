@@ -10,43 +10,70 @@ import {Router} from '@angular/router'
 })
 export class ClassroomComponent implements OnInit {
   chart=[]
+  public comments;
 
   constructor(private httpservice: HttpService, private router:Router) { }
 
   ngOnInit() {
-    this.getClassrooms();
+    this.getAnswers();
   }
 
-  getClassrooms(){
-    return this.httpservice.getClassroom().subscribe((result)=>{
-      var classroom=result.json();
-      console.log(classroom)
-      var response_count=classroom.length;
+  getAnswers(){
+    return this.httpservice.getAnswers().subscribe((result)=>{
+      var res=result.json();
+      console.log(res);
       var response={
+        classroom:[],
+        comment:[]
+      }
+      for(var i=0; i<res.length; i++){
+        var obj=res[i]
+        if(obj.question==="classroom"){
+          response.classroom.push(obj.answer);
+        }
+        if(obj.question==="classroom comment"){
+          response.comment.push(obj.answer)
+        }
+      }
+      this.comments=response.comment;
+      console.log(this.comments);
+      console.log(response);
+  
+  
+      var classroom_response=response.classroom;
+      var classroom_response_count=classroom_response.length;
+      console.log(classroom_response_count)
+  
+  
+       var filter={
         promoters:[],
         detractors:[]
       }
-      for(var i=0; i<classroom.length; i++){
-        var obj= classroom[i];
-        if(obj.answer<7){
-          response.detractors.push(obj.answer);
+  
+      var l=classroom_response.map(Number);
+      l.forEach(function(number){
+        if(number<7){
+          filter.detractors.push(number);
         }
-        if(obj.answer>8){
-          response.promoters.push(obj.answer);
+        if(number>8){
+          filter.promoters.push(number);
         }
-      }
-      console.log(response);
-      var p=response.promoters;
-      var d= response.detractors;
-      var promoters_count=p.length;
-      var detractor_count=d.length;
-      var response_difference=promoters_count-detractor_count;
-      var nps= response_difference*100/response_count;
+      });
+      console.log(filter);
+  
+  
+      var promoters_count=filter.promoters.length;
+      var detractors_count=filter.detractors.length;
+      var difference=promoters_count-detractors_count;
+      console.log(difference);
+  
+      var nps=difference*100/classroom_response_count;
       console.log(nps);
+      
       this.chart= new Chart ('canvas',{
         type:'bar',
         data:{
-          labels:[2019,2018],
+          labels:[2019,2020],
           datasets:[
             {
             data:[nps,0],
@@ -88,5 +115,4 @@ export class ClassroomComponent implements OnInit {
     }
     
     }
-    
-    
+  

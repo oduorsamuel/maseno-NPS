@@ -1,29 +1,32 @@
-<nav class="navbar navbar-default navbar-fixed-top" *ngIf="showNavbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-        aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+<mat-toolbar color="primary">
+    <span class="fill-remaining-space">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
       </button>
-      <a class="navbar-brand" href="#"><img src="../../../assets/logo.png" style="width: 1em;" alt="logo"></a>
-      <a class="navbar-brand" href="#">Computing and Informatics NPS</a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li> <a routerLink="/admindepartment">Department</a></li>
-        <li> <a routerLink="/adminProgram">Programs</a></li>
-        <li> <a routerLink="/adminUnit">Units</a></li>
-        <li> <a routerLink="/school">Graphs</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a style="cursor: pointer;"(click)="onLogout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<div class="jumbotron">
-  <br><br>
-</div>
+      <mat-menu #menu="matMenu" [overlapTrigger]="false">
+          <a routerLink="/school" mat-menu-item>
+            <mat-icon>home</mat-icon>
+            <span>View Reports</span>
+          </a>
+
+        <a routerLink="/admindepartment" mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <span>Department</span>
+        </a>
+        <a routerLink="/adminProgram" mat-menu-item>
+            <mat-icon>home</mat-icon>
+            <span>Programs</span>
+          </a>
+          <a routerLink="/adminUnit" mat-menu-item>
+              <mat-icon>home</mat-icon>
+              <span>Unit</span>
+            </a>
+        <button mat-menu-item (click)="onLogout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </span>
+    <span class="fill-remaining-space">Computing and Informatics NPS</span>
+  </mat-toolbar>
+  <br><br><br>

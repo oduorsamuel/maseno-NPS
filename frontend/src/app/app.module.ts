@@ -1,12 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { SurveyComponent } from './survey.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 import { LoginComponent } from './login/login.component';
+import { MatToolbarModule, MatNativeDateModule, MatFormFieldModule, MatInputModule,MatDialogModule, MatOptionModule, MatSelectModule, MatIconModule, MatButtonModule, MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule, MatTooltipModule, MatMenuModule,MatSidenavModule, MatListModule } from '@angular/material';
 
 import { HttpService } from './http.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -59,11 +62,31 @@ import { ClassroomComponent } from './graphs/classroom/classroom.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatToolbarModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatTableModule,
+    MatDividerModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatTooltipModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [HttpService, AuthGuard,AdminService],
   bootstrap: [AppComponent]

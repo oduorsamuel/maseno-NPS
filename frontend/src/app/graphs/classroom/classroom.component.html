@@ -1,15 +1,20 @@
 <app-admin-nav></app-admin-nav>
 <br>
-<div style="text-align:center">
-    <strong > Graph showing NPS  rate for the classroom facilities offered by the school</strong>
-</div>
 <br>
 <div class="margin">
+   <strong > Graph showing NPS  rate for the classroom facilities offered by the school</strong>
+   <br>
     <div class="center" *ngIf="chart">
         <canvas id="canvas">{{chart}}</canvas>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12" >
         <a class="pull-left" routerLink="../lab">Previous</a>
         <a class="pull-right" routerLink="../conclusion">Recomendations</a>
+      </div>
+      <br><br>
+      
+      <strong>Students Observations</strong>
+      <div class="center" *ngFor="let comment of comments">
+          <li>{{comment}}</li>
       </div>
 </div>

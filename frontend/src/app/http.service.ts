@@ -40,7 +40,11 @@ export class HttpService {
         headers:this.getCredentials()
         })
     }
-
+    getAnswers(){
+        return this.http.get(BASEURL + 'answers',{
+        headers:this.getCredentials()
+        })
+    }
     getClassroom(){
         return this.http.get(BASEURL + 'classroom',{
         headers:this.getCredentials()

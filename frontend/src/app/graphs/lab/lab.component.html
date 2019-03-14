@@ -1,15 +1,17 @@
 <app-admin-nav></app-admin-nav>
 <br>
-<div style="text-align:center">
-    <strong > Graph showing NPS for the overall effectiveness of lab Equipments </strong>
-</div>
 <br>
 <div class="margin">
+    <strong> Graph showing NPS for the overall effectiveness of lab Equipments </strong>
     <div class="center" *ngIf="chart">
         <canvas id="canvas">{{chart}}</canvas>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-12" >
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
         <a class="pull-left" routerLink="../school">Previous</a>
         <a class="pull-right" routerLink="../classroom">Lecture Halls</a>
-      </div>
+    </div>
+    <strong>Students Observations</strong>
+    <div class="center" *ngFor="let comment of comments">
+        <li>{{comment}}</li>
+    </div>
 </div>

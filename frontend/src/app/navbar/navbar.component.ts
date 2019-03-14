@@ -1,6 +1,8 @@
 import { Component, DoCheck } from '@angular/core';
 import { Router } from '../../../node_modules/@angular/router';
 import { HttpService } from '../http.service';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -8,11 +10,13 @@ import { HttpService } from '../http.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements DoCheck{
-
+  isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
+  
   showNavbar = false;
 
   constructor(private router: Router,
-              private httpService: HttpService) {}
+              private httpService: HttpService,
+              private breakpointObserver: BreakpointObserver) {}
 
   onLogout() {
     this.httpService.logout().subscribe();

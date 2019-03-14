@@ -258,6 +258,22 @@ module.exports = { routesFxn: (connection, validate) => [
 //survey Query
 {
   method:'get',
+  path:'/answers',
+ handler: (request, h)=>{
+        return new Promise(
+         (res, reject)=>{
+           connection.query("SELECT `question` , `answer` From `studentresponse`", (err,result,fields)=>{
+             if(err){
+               reject(err);
+             }
+             res(result);
+           })
+         }
+        );   
+ }
+ },
+{
+  method:'get',
   path:'/studentResponse',
  handler: (request, h)=>{
         return new Promise(
