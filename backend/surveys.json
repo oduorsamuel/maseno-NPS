@@ -10,7 +10,7 @@
           "type": "barrating",
           "title":"Considering both the limitations and possibilities of the subject matter and the course, how would you rate the overall effectiveness of this unit?",
           "isRequired": true,
-          "name":"Unit General" ,
+          "name":"unit" ,
           "choices": [
            1,
            2,
@@ -28,7 +28,7 @@
       "title":"Briefly give us your views  based on your response",
       "isRequired": true,
       "type": "comment",
-      "name": "unit General comment"
+      "name": "unit comment"
         }
         ]
        },
@@ -55,7 +55,7 @@
           ]
          },
          {
-      "title":"Briefly give reason for the rating provided",
+      "title":"Briefly give reason for the rating above",
       "isRequired": true,
       "type": "comment",
       "name": "instructor comment"

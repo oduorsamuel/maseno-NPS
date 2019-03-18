@@ -8,3 +8,14 @@ button {
      font-size: 15px;
     font-weight: normal;
  margin: 0; }
+ table {
+    width: 100%;
+}
+.mat-column-right{
+    text-align: center;
+}
+
+.margin{
+    margin-left: 5%;
+    margin-right: 5%;
+}

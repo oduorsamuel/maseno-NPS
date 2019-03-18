@@ -256,88 +256,6 @@ module.exports = { routesFxn: (connection, validate) => [
 },
 
 //survey Query
-{
-  method:'get',
-  path:'/answers',
- handler: (request, h)=>{
-        return new Promise(
-         (res, reject)=>{
-           connection.query("SELECT `question` , `answer` From `studentresponse`", (err,result,fields)=>{
-             if(err){
-               reject(err);
-             }
-             res(result);
-           })
-         }
-        );   
- }
- },
-{
-  method:'get',
-  path:'/studentResponse',
- handler: (request, h)=>{
-        return new Promise(
-         (res, reject)=>{
-           connection.query("SELECT * FROM `studentresponse` WHERE `question` ='question1'", (err,result,fields)=>{
-             if(err){
-               reject(err);
-             }
-             res(result);
-           })
-         }
-        );   
- }
- },
-{
-  method:'get',
-  path:'/school',
- handler: (request, h)=>{
-        return new Promise(
-         (res, reject)=>{
-           connection.query("SELECT * FROM `studentresponse` WHERE `question` ='school'", (err,result,fields)=>{
-             if(err){
-               reject(err);
-             }
-             res(result);
-           })
-         }
-        );   
- }
- },
- {
-   method:'get',
-   path:'/lab',
-   handler:(req, h)=>{
-     return new Promise(
-      (res, reject)=>{
-        connection.query("SELECT * FROM `studentresponse` WHERE `question` ='lab'", (err,result,fields)=>{
-          if(err){
-            reject(err)
-          }
-          res(result)
-        })
-      } 
-     )
-   }
- },
-
- {
-  method:'get',
-  path:'/classroom',
-  handler:(req, h)=>{
-    return new Promise(
-     (res, reject)=>{
-       connection.query("SELECT * FROM `studentresponse` WHERE `question` ='classroom'", (err,result,fields)=>{
-         if(err){
-           reject(err)
-         }
-         res(result)
-       })
-     } 
-    )
-  }
-},
-
  {
   method:'get',
   path:'/dept',
@@ -349,12 +267,47 @@ module.exports = { routesFxn: (connection, validate) => [
            reject(err)
          }
          res(result)
+       })
+     } 
+    )
+  }
+},
+{
+  method:'get',
+  path:'/allSurvey',
+  handler:(req, h)=>{
+    return new Promise(
+     (res, reject)=>{
+       connection.query("SELECT * FROM encounter INNER JOIN studentResponse ON encounter.surveyEncounterId=studentresponse.surveyEncounter_surveyEncounterId", (err,result,fields)=>{
+         if(err){
+           reject(err)
+         }
+         res(result)
         //  console.log(JSON.stringify(result));
        })
      } 
     )
   }
 },
+
+{
+  method:'get',
+  path:'/allSurveys/{unitCode}',
+  handler:(request,h)=>{
+    const unitCode = request.params.unitCode;
+    return new Promise(
+      (res, reject)=>{
+        connection.query('SELECT * FROM encounter INNER JOIN studentResponse ON encounter.surveyEncounterId=studentresponse.surveyEncounter_surveyEncounterId WHERE unitCode = ?',[request.params.unitCode],(err, result,fields)=>{
+          if(err){
+            reject(err);
+          }
+          res(result);
+        })
+      }
+    );
+  }
+},
+
 
 {
   method: 'POST',

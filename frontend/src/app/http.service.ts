@@ -28,29 +28,6 @@ export class HttpService {
             headers: this.getCredentials()
         })
     }
-
-    getSchool(){
-        return this.http.get(BASEURL + 'school',{
-            headers: this.getCredentials()
-        })
-    }
-
-    getLab(){
-        return this.http.get(BASEURL + 'lab',{
-        headers:this.getCredentials()
-        })
-    }
-    getAnswers(){
-        return this.http.get(BASEURL + 'answers',{
-        headers:this.getCredentials()
-        })
-    }
-    getClassroom(){
-        return this.http.get(BASEURL + 'classroom',{
-        headers:this.getCredentials()
-        })
-    }
-
     getdept(){
         return this.http.get(BASEURL + 'dept',{
             headers:this.getCredentials()
@@ -68,6 +45,18 @@ export class HttpService {
             headers:this.getCredentials()
         })
     }
+    getEncounters(){
+        return this.http.get(BASEURL + 'allSurvey',{
+            headers:this.getCredentials()
+        })
+    }
+
+    getSearch(unitCode){
+        return this.http.get(BASEURL+ `allSurveys/${unitCode}`,{
+          headers:this.getCredentials()
+        })
+      }
+
     storeSurveys(response) {
         return this.http.post(BASEURL + 'storeSurveys', response, {
             headers: this.getCredentials()

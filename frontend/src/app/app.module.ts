@@ -34,6 +34,8 @@ import { AdminLoginComponent } from './administrator/admin-login/admin-login.com
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminNavComponent } from './administrator/admin-nav/admin-nav.component';
 import { ClassroomComponent } from './graphs/classroom/classroom.component';
+import { UnitsComponent } from './graphs/units/units.component';
+
 
 
 @NgModule({
@@ -59,6 +61,7 @@ import { ClassroomComponent } from './graphs/classroom/classroom.component';
     NavbarComponent,
     AdminNavComponent,
     ClassroomComponent,
+    UnitsComponent
   ],
   imports: [
     BrowserModule,

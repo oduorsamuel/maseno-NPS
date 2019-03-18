@@ -13,6 +13,7 @@ export class AdminDepartmentComponent implements OnInit {
 public departments;
 showAlert = false;
 model={departmentId:'', departmentName:'',}
+isplayedColumn= ['departmentId','departmentName','action']
 
   constructor(private adminservice:AdminService, private router:Router) { }
 

@@ -15,21 +15,23 @@ export class ClassroomComponent implements OnInit {
   constructor(private httpservice: HttpService, private router:Router) { }
 
   ngOnInit() {
-    this.getAnswers();
+    this.getClassroom();
   }
 
-  getAnswers(){
-    return this.httpservice.getAnswers().subscribe((result)=>{
-      var res=result.json();
-      console.log(res);
+  getClassroom(){
+    return this.httpservice.getEncounters().subscribe((result)=>{
+      var classroom=result.json();
+      console.log(classroom);
       var response={
         classroom:[],
-        comment:[]
+        comment:[],
+        date:[],
       }
-      for(var i=0; i<res.length; i++){
-        var obj=res[i]
+      for(var i=0; i<classroom.length; i++){
+        var obj= classroom[i]
         if(obj.question==="classroom"){
           response.classroom.push(obj.answer);
+          response.date.push(obj.date);
         }
         if(obj.question==="classroom comment"){
           response.comment.push(obj.answer)
@@ -69,7 +71,7 @@ export class ClassroomComponent implements OnInit {
   
       var nps=difference*100/classroom_response_count;
       console.log(nps);
-      
+
       this.chart= new Chart ('canvas',{
         type:'bar',
         data:{

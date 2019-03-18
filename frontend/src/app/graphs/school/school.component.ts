@@ -20,89 +20,97 @@ public total_response;
   }
 
   getSchool(){
-    return this.httpservice.getSchool().subscribe((result)=>{
-     this.school=result.json();
-     console.log(this.school);
-     this.total_response=this.school.length;
-     console.log(this.total_response)
-     var response={
-      detractors:[],
-      promoters:[]
-    }
-    for (var i = 0; i < this.school.length; i++) {
-      var obj=this.school[i]
-      if(obj.answer<7){
-        response.detractors.push(obj.answer);
-      };
-      if(obj.answer>8){
-        response.promoters.push(obj.answer);
+    return this.httpservice.getEncounters().subscribe((result)=>{
+      var school=result.json();
+      console.log(school);
+      var response={
+        school:[],
+        date:[]
       }
-      
-    }
-    var p=response.promoters
-    var d=response.detractors
-    var number_of_detractors=d.length;
-    var number_of_promoters=p.length;
-    console.log(number_of_promoters);
-    console.log(number_of_detractors);
-    var response_difference=number_of_promoters-number_of_detractors;
-    console.log(response_difference);
-
-    var nps=response_difference*100/this.total_response;
-    // var nps = Math.trunc( percentage );
-    console.log(nps);
-
-    // Graphical representation of NPS
-    this.chart= new Chart ('canvas',{
-      type:'bar',
-      data:{
-        labels:[2019,2020],
-        datasets:[
-          {
-          data:[nps,0],
-          label:'score%',
-          borderColor:'#3aaa9f',
-          backgroundColor:'#ff4081',
-          fill: false
+      for(var i=0; i<school.length; i++){
+        var obj= school[i];
+        if(obj.question==="school"){
+          response.school.push(obj.answer);
+          response.date.push(obj.date);
         }
-      ]
-      },
-      options:{
-        lagend:{
-          display:false
+      }
+      console.log(response);
+      var total_response=response.school.length;
+      var s=response.school;
+
+      var filter={
+        detractors:[],
+        promoters:[]
+      }
+      s.forEach(function(number){
+        if(number<7){
+          filter.detractors.push(number);
+        }
+        if(number>8){
+          filter.promoters.push(number);
+        }
+      });
+      console.log(filter);
+
+        
+      var promoters_count=filter.promoters.length;
+      var detractors_count=filter.detractors.length;
+      var difference=promoters_count-detractors_count;
+      console.log(difference);
+  
+      var nps=difference*100/total_response;
+      console.log(nps);
+      this.chart= new Chart ('canvas',{
+        type:'bar',
+        data:{
+          labels:[2019,2020],
+          datasets:[
+            {
+            data:[nps,0],
+            label:'score%',
+            borderColor:'#3aaa9f',
+            backgroundColor:'#ff4081',
+            fill: false
+          }
+        ]
         },
-        scales:{
-          xAxes:[{
-            display:true,
-            scaleLabel:{
+        options:{
+          lagend:{
+            display:false
+          },
+          scales:{
+            xAxes:[{
               display:true,
-            labelString:'Academic Year'
-            }
-          }],
-          yAxes:[{
-            display:true,
-            scaleLabel:{
+              scaleLabel:{
+                display:true,
+              labelString:'Academic Year'
+              }
+            }],
+            yAxes:[{
               display:true,
-            labelString:'Net Promoter Score'
-            }
-            
-          }],
+              scaleLabel:{
+                display:true,
+              labelString:'Net Promoter Score'
+              }
+              
+            }],
+          }
         }
-      }
+        })
       })
-    })
-
-
-
-
-    // var formatPromoters = p.map(Number);
-    // var sum_of_promoters = formatPromoters.reduce(function(formatPromoters, b) { return formatPromoters + b; }, 0);
-    //     var d=response.detractors
-    //     var formatDetractors = d.map(Number);
-    //     console.log(formatDetractors);
-    //     var sum_of_detractors = formatDetractors.reduce(function(formatPromoters, b) { return formatPromoters + b; }, 0);
-    //     console.log(sum_of_detractors);
-
+  
+  
+  
+  
+      // var formatPromoters = p.map(Number);
+      // var sum_of_promoters = formatPromoters.reduce(function(formatPromoters, b) { return formatPromoters + b; }, 0);
+      //     var d=response.detractors
+      //     var formatDetractors = d.map(Number);
+      //     console.log(formatDetractors);
+      //     var sum_of_detractors = formatDetractors.reduce(function(formatPromoters, b) { return formatPromoters + b; }, 0);
+      //     console.log(sum_of_detractors);
+  
+    }
+  
   }
-
-}
+  

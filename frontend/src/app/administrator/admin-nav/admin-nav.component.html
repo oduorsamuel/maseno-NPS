@@ -5,20 +5,20 @@
       </button>
       <mat-menu #menu="matMenu" [overlapTrigger]="false">
           <a routerLink="/school" mat-menu-item>
-            <mat-icon>home</mat-icon>
+            <mat-icon>view_list</mat-icon>
             <span>View Reports</span>
           </a>
 
         <a routerLink="/admindepartment" mat-menu-item>
-          <mat-icon>home</mat-icon>
+          <mat-icon>create</mat-icon>
           <span>Department</span>
         </a>
         <a routerLink="/adminProgram" mat-menu-item>
-            <mat-icon>home</mat-icon>
+            <mat-icon>add_circle</mat-icon>
             <span>Programs</span>
           </a>
           <a routerLink="/adminUnit" mat-menu-item>
-              <mat-icon>home</mat-icon>
+              <mat-icon>list_alt</mat-icon>
               <span>Unit</span>
             </a>
         <button mat-menu-item (click)="onLogout()">
