@@ -1,38 +1,19 @@
-<mat-sidenav-container id="sidenav-container" *ngIf="showNavbar">
-    <mat-sidenav
-      #drawer
-      class="sidenav"
-      fixedInViewport="true"
-      [attr.role]="isHandset ? 'dialog' : 'navigation'"
-      [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
-      [opened]="!(isHandset | async)!.matches">
-      <mat-toolbar color="primary">MASENO NPS</mat-toolbar>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/about">
-          <mat-icon>all_out</mat-icon>
-         User Guide</a><br><br>
-        <a mat-list-item routerLink="/school">
+<mat-toolbar color="primary">
+  <span class="fill-remaining-space">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+        <a routerLink="/school" mat-menu-item>
           <mat-icon>view_list</mat-icon>
-          View  Reports</a><br><br>
-        <a mat-list-item (click)="onLogout()">
-           <mat-icon>exit_to_app</mat-icon>
-          Logout</a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <mat-toolbar color="primary">
-        <button
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()"
-          *ngIf="(isHandset | async)!.matches">
-          <mat-icon aria-label="Side nav toggle icon" style="color: white">menu</mat-icon>
-        </button>
-        <span style="color: white"><h3></h3></span>
-      </mat-toolbar>
-      <br><br>
-      <ng-content></ng-content>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
+          <span>Staff Panel</span>
+        </a>
+      <button mat-menu-item (click)="onLogout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </span>
+  <span class="fill-remaining-space">Computing and Informatics NPS</span>
+</mat-toolbar>
+<br><br><br>

@@ -68,11 +68,12 @@ module.exports = { routesFxn: (connection, validate) => [
       method:'post',
       path:'/program',
       handler:(request, h)=>{
+        let department=request.payload.department;
         let programId=request.payload.programId;
         let programName=request.payload.programName;
         return new Promise(
           (res, reject)=>{
-          connection.query("insert into programs(programId, ProgramName) VALUES('"+programId+"','"+programName+"')",(err,result,fields)=>{
+          connection.query("insert into programs(departmentId,programId, ProgramName) VALUES('"+department+"','"+programId+"','"+programName+"')",(err,result,fields)=>{
             if(err){
               reject(err);
             }
@@ -91,11 +92,15 @@ module.exports = { routesFxn: (connection, validate) => [
       method:'post',
       path:'/unit',
       handler:(request, h)=>{
+        let department=request.payload.department;
+        let program=request.payload.program;
+        let year=request.payload.year;
+        let semester=request.payload.semester;
         let unitCode=request.payload.unitCode;
         let unitName=request.payload.unitName;
         return new Promise(
           (res, reject)=>{
-            connection.query("insert into units(unitCode, unitName) VALUES('"+unitCode+"','"+unitName+"')",(err,result,fields)=>{
+            connection.query("insert into units(departmentId, programId, year,semester,unitCode, unitName) VALUES('"+department+"','"+program+"','"+year+"', '"+semester+"',  '"+unitCode+"','"+unitName+"')",(err,result,fields)=>{
               if(err){
                 reject(err);
               }
@@ -148,6 +153,24 @@ module.exports = { routesFxn: (connection, validate) => [
 
     {
       method:'get',
+      path:'/programs/{departmentId}',
+      handler:(request,h)=>{
+        const departmentId = request.params.departmentId;
+        return new Promise(
+          (res, reject)=>{
+            connection.query('SELECT * FROM departments INNER JOIN programs ON departments.departmentId=programs.departmentId WHERE departments.departmentId = ?',[request.params.departmentId],(err, result,fields)=>{
+              if(err){
+                reject(err);
+              }
+              res(result);
+            })
+          }
+        );
+      }
+    },
+
+    {
+      method:'get',
       path:'/units',
       handler:(request,h)=>{
         return new Promise(
@@ -155,6 +178,27 @@ module.exports = { routesFxn: (connection, validate) => [
             connection.query("select * from units",(err, result,fields)=>{
               if(err){
                 reject(err);
+              }
+              res(result);
+            })
+          }
+        );
+      }
+    },
+
+    {
+      method:'get',
+      path:'/programs/{programId}/{year}/{semester}',
+      handler:(request,h)=>{
+        const programId = request.params.programId;
+        const year = request.params.year;
+        const semester = request.params.semester;
+        return new Promise(
+          (res, reject)=>{
+            connection.query('SELECT * FROM programs INNER JOIN units ON programs.programId=units.programId WHERE programs.programId = ? AND units.year= ? AND units.semester= ?',[request.params.programId,request.params.year,request.params.semester],(err, result,fields)=>{
+              if(err){
+                reject(err);
+                console.log(err);
               }
               res(result);
             })

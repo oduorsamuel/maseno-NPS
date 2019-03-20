@@ -9,6 +9,9 @@ import { Response } from '@angular/http';
   styleUrls: ['./unit.component.css']
 })
 export class UnitComponent implements OnInit {
+  public year;
+  public programId;
+  public semester;
 
   unitArray: {'unitCode': string, 'unitName': string}[];
 
@@ -17,14 +20,24 @@ export class UnitComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-  this.getUnits();
+    this.route.params.subscribe(response=>{
+      this.programId=response.program;
+      this.year=response.year;
+      this.semester=response.semester;
+      console.log(response);
+     })
+     console.log(this.year);
+     this.getUnits(this.programId,this.year,this.semester);
+     
+     
   }
+      getUnits(programId,year,semester){
+        return this.httpService.filterUnits(programId,year,semester).subscribe((response : Response)=>{
+        this.unitArray=response.json();
+        console.log(this.unitArray);
+        })
+      }
 
-  getUnits(){
-    return this.httpService.getUnits().subscribe((response : Response)=>{
-    this.unitArray=response.json();
-    })
-  }
   onSave(unit) {
      let surveyId=1
     if (unit !== 'Select Unit') {

@@ -1,8 +1,11 @@
-<app-admin-nav></app-admin-nav>
+<app-admin-nav>
 <br>
 <br>
+<div class="container">
+<div class="jumbotron" style="text-align: center">
+        <strong> Graph showing NPS for the overall effectiveness of lab Equipments </strong>
+</div>
 <div class="margin">
-    <strong> Graph showing NPS for the overall effectiveness of lab Equipments </strong>
     <div class="center" *ngIf="chart">
         <canvas id="canvas">{{chart}}</canvas>
     </div>
@@ -10,8 +13,12 @@
         <a class="pull-left" routerLink="../school">Previous</a>
         <a class="pull-right" routerLink="../classroom">Lecture Halls</a>
     </div>
-    <strong>Students Observations</strong>
-    <div class="center" *ngFor="let comment of comments">
+</div>
+<div class="jumbotron" style="text-align: center">
+        <strong>Students Observations</strong>
+</div>
+<div class="center" *ngFor="let comment of comments">
         <li>{{comment}}</li>
     </div>
 </div>
+</app-admin-nav>

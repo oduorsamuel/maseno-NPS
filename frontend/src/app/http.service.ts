@@ -40,6 +40,18 @@ export class HttpService {
         })
     }
 
+    filterPrograms(departmentId){
+        return this.http.get(BASEURL+ `programs/${departmentId}`,{
+          headers:this.getCredentials()
+        })
+      }
+
+      filterUnits(programId,year,semester){
+        return this.http.get(BASEURL+ `programs/${programId}/${year}/${semester}`,{
+          headers:this.getCredentials()
+        })
+      }
+
     getUnits(){
         return this.http.get(BASEURL + 'units',{
             headers:this.getCredentials()

@@ -1,0 +1,30 @@
+#sidenav-container {
+    height: 100%;
+   /* background-color:  #5bc0de;*/
+    
+    
+  }
+  
+  .sidenav {
+    width: 180px;
+    box-shadow: 3px 0 6px rgba(0,0,0,.24);
+    /* background-color: #428bca; */
+    
+  }
+  
+  i{
+    color:white;
+  }
+  
+  .blue{
+    background-color: #428bca;
+  }
+  .primary{
+    background-color: #1ab394
+  }
+
+  a { color: #ffffff;
+    font-family: 'Trocchi', serif;
+     font-size: 15px;
+    font-weight: normal;
+    line-height: 38px; margin: 0; }

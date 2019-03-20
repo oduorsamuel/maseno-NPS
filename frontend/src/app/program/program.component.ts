@@ -10,14 +10,19 @@ import { Response } from '@angular/http';
 })
 export class ProgramComponent implements OnInit {
 programArray: {'programId': string, 'programName': string}[];
+public departmentId;
 
   constructor(private router: Router,
     private httpService: HttpService,
     private route: ActivatedRoute) { }
 
-  ngOnInit() {
-   this.getPrograms();
-  }
+    ngOnInit() {
+      this.route.params.subscribe(response=>{
+        this.departmentId=response.departmentId;
+       })
+       this.getPrograms(this.departmentId);
+      console.log(this.departmentId)
+     }
   onSave(program) {
     if (program !== 'Select program') {
       let programId;
@@ -31,8 +36,8 @@ programArray: {'programId': string, 'programName': string}[];
     }
   }
 
-  getPrograms(){
-    return this.httpService.getPrograms().subscribe((response: Response)=>{
+  getPrograms(departmentId){
+    return this.httpService.filterPrograms(departmentId).subscribe((response: Response)=>{
          this.programArray=response.json();
     })
   }

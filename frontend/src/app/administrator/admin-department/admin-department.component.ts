@@ -18,7 +18,6 @@ isplayedColumn= ['departmentId','departmentName','action']
   constructor(private adminservice:AdminService, private router:Router) { }
 
   ngOnInit() {
-    this.getDepartments();
   }
 
   addDepartment(){
@@ -27,23 +26,12 @@ isplayedColumn= ['departmentId','departmentName','action']
        if(departments!=null)
        console.log(departments);
        this.showAlert = true;
+       this.router.navigate(['/listDepartments'])
        },
        function (error){console.log("error"+error)},
        function(){console.log("subscription done")}
     );
 
-}
-
-getDepartments(){
-  return this.adminservice.getDepartments().subscribe((results:Response)=>{
-    this.departments=results.json()
-  })
-}
-
-deleteDepartment(departmentId){
-  return this.adminservice.deleteDepartment(departmentId).subscribe(()=>{
-  this.getDepartments()
-  })
 }
 
 }

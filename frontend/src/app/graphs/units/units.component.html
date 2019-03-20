@@ -1,23 +1,27 @@
-<app-admin-nav></app-admin-nav>
+<app-admin-nav>
 <div class="container">
   <div class="jumbotron">
       <form class="form-inline my-2 my-lg-0" #form="ngForm">
-          <input class="form-control mr-sm-2" type="search" name="unitCode" placeholder="Search Unit" aria-label="Search" [(ngModel)]="unitCode">
-          <button class="btn btn-outline-info active my-2 my-sm-0" type="submit" (click)="getUnits(unitCode)" >Search</button>
+          <input class="form-control mr-sm-2" type="search" name="unitCode"  placeholder="Search Unit" aria-label="Search" [(ngModel)]="unitCode">
+          <button class="btn btn-outline-info active my-2 my-sm-0" type="submit" (click)="getUnits(unitCode)" >Search unit</button>
       </form>
   </div>
 </div>
 <br>
 <div class="margin">
-   <strong > Graph showing NPS  For The Selected Unit</strong>
+   <h3 > Graph showing NPS  For The Selected Unit</h3>
    <br>
     <div class="center" *ngIf="chart">
         <canvas id="canvas">{{chart}}</canvas>
+        <div class="col-xs-12 col-sm-12 col-md-12" >
+                <a class="pull-left" routerLink="../classroom">Previous</a>
+              </div>
       </div>
       <br><br>
       
-      <strong>Students Observations</strong>
-      <div class="center" *ngFor="let comment of comments">
-          <li>{{comment}}</li>
-      </div>
+    <h3>Students comments</h3>
+<div class="center" *ngFor="let comment of comments">
+    <li>{{comment}}</li>
 </div>
+</div>
+</app-admin-nav>

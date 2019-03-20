@@ -35,6 +35,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AdminNavComponent } from './administrator/admin-nav/admin-nav.component';
 import { ClassroomComponent } from './graphs/classroom/classroom.component';
 import { UnitsComponent } from './graphs/units/units.component';
+import { ListUnitsComponent } from './administrator/list-units/list-units.component';
+import { ListDepartmentsComponent } from './administrator/list-departments/list-departments.component';
+import { ListProgramsComponent } from './administrator/list-programs/list-programs.component';
 
 
 
@@ -61,7 +64,10 @@ import { UnitsComponent } from './graphs/units/units.component';
     NavbarComponent,
     AdminNavComponent,
     ClassroomComponent,
-    UnitsComponent
+    UnitsComponent,
+    ListUnitsComponent,
+    ListDepartmentsComponent,
+    ListProgramsComponent
   ],
   imports: [
     BrowserModule,

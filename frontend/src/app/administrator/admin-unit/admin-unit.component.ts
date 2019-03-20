@@ -10,12 +10,16 @@ import {Router} from '@angular/router'
 })
 export class AdminUnitComponent implements OnInit {
   public units;
+  public departments;
+  public programs;
   showAlert=false;
-  model={unitCode:'',unitName:'',programId:''}
+  model={department:'', program:'', year:'', unitCode:'',unitName:'',programId:''}
   constructor(private adminservice:AdminService, private router:Router) { }
 
   ngOnInit() {
     this.getUnits();
+    this.getDepartment();
+    this.getPrograms();
   }
 
   addUnit(){
@@ -24,6 +28,7 @@ export class AdminUnitComponent implements OnInit {
        if(units!=null)
        console.log(units);
        this.showAlert=true
+       this.router.navigate(['/listUnits'])
        },
        function (error){console.log("error"+error)},
        function(){console.log("subscription done")}
@@ -33,6 +38,18 @@ export class AdminUnitComponent implements OnInit {
 getUnits(){
   return this.adminservice.getUnits().subscribe((results)=>{
     this.units=results.json();
+  })
+}
+
+getPrograms(){
+  return this.adminservice.getPrograms().subscribe((results)=>{
+    this.programs=results.json();
+  })
+}
+
+getDepartment(){
+  return this.adminservice.getDepartments().subscribe((results)=>{
+    this.departments=results.json();
   })
 }
 

@@ -1,0 +1,26 @@
+<app-admin-nav>
+    <div class="container">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>program Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let program of programs">
+              <td>{{program.programId}}</td>
+              <td>{{program.programName}}</td>
+              <td>
+                <a (click)='deleteProgram(program.programId)' type="button" style="color: red" aria-label="Left Align">
+      
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+      
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</app-admin-nav>

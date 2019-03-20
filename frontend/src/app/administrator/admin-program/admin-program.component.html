@@ -1,48 +1,37 @@
-<app-admin-nav></app-admin-nav>
-<div class="container">
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>program Name</th>
-          <th>Action</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let program of programs">
-          <td>{{program.programId}}</td>
-          <td>{{program.programName}}</td>
-          <td>
-            <a routerLink="/units" style="color:blue;">Edit</a>
-          </td>
-          <td>
-            <a (click)='deleteprogram(program.programId)' type="button" style="color: red" aria-label="Left Align">
-   
-              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-               
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<app-admin-nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-6">
+        <div style="color: green" *ngIf="showAlert">Program Added Successfully</div>
+        <br>
+        <form class="" (ngSubmit)="addProgram()" #addform="ngForm">
+          <div class="form_group">
+            <label>Department</label>
+            <select class="form-control" id="department" [(ngModel)]="model.department" name="department" required>
+              <option *ngFor="let department of departments" [value]="department.departmentId">{{department.departmentName}}</option>
+            </select>
+          </div>
+          <br>
+          <div class="form-group">
+            <label class="">Program Code</label>
+            <input type="number" class="form-control" name="programId" [(ngModel)]="model.programId" required #programId="ngModel" placeholder="Enter Program Code"
+              #ProgramId>
+          </div>
+          <br>
+          <div class="form-group">
+            <label class="">Program Name</label>
+            <input type="text" class="form-control" name="programName" [(ngModel)]="model.programName" required #programName="ngModel"
+              placeholder="Enter Program Name" #ProgramName>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!addform.form.valid">Add Program</button>
+          <br>
+          <a routerLink="../listPrograms" class="pull-right">View</a>
+        </form>
+        <br>
+        <br>
+      </div>
+      <div class="col-md-2"></div>
     </div>
-<div class="container">
-    <div style="color: green" *ngIf="showAlert">Program Added Successfully</div>
-    <br>
-    <form class="form-inline" (ngSubmit)="addProgram()" #addform="ngForm">
-      <div class="form-group">
-        <label class="sr-only">Program Code</label>
-        <input type="number" class="form-control" name="programId" [(ngModel)]="model.programId" required #programId="ngModel"
-          placeholder="Enter Program Code" #ProgramId>
-      </div>
-      <div class="form-group">
-        <label class="sr-only">Program Name</label>
-        <input type="text" class="form-control" name="programName" [(ngModel)]="model.programName" required #programName="ngModel"
-          placeholder="Enter Program Name" #ProgramName>
-      </div>
-      <button type="submit" class="btn btn-primary" [disabled]="!addform.form.valid">Add Program</button>
-    </form>
-    <br>
-    <br>
   </div>
+</app-admin-nav>

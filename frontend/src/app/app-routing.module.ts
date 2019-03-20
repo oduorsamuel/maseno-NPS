@@ -22,6 +22,9 @@ import { SchoolComponent } from './graphs/school/school.component';
 import { LabComponent } from './graphs/lab/lab.component';
 import { ClassroomComponent } from './graphs/classroom/classroom.component';
 import { UnitsComponent } from './graphs/units/units.component';
+import { ListUnitsComponent } from './administrator/list-units/list-units.component';
+import { ListProgramsComponent } from './administrator/list-programs/list-programs.component';
+import { ListDepartmentsComponent } from './administrator/list-departments/list-departments.component';
 
 const appRoutes = [
   {
@@ -43,7 +46,7 @@ const appRoutes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'department/:location/program',
+    path: 'department/:departmentId/program',
     component: ProgramComponent,
     canActivate: [AuthGuard]
   },
@@ -124,6 +127,31 @@ const appRoutes = [
   {
     path: 'units',
     component: UnitsComponent,
+    canActivate: [AuthGuard]
+    
+  },
+  {
+    path: 'listUnits',
+    component: ListUnitsComponent,
+    canActivate: [AuthGuard]
+    
+  },
+
+  {
+    path: 'listUnits',
+    component: ListUnitsComponent,
+    canActivate: [AuthGuard]
+    
+  }, 
+   {
+    path: 'listPrograms',
+    component: ListProgramsComponent,
+    canActivate: [AuthGuard]
+    
+  },
+  {
+    path: 'listDepartments',
+    component: ListDepartmentsComponent,
     canActivate: [AuthGuard]
     
   },

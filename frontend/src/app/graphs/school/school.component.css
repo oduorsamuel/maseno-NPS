@@ -4,3 +4,14 @@
     margin-bottom: 25%;
     margin-top: 10px;
 }
+li { color: #000000;
+    font-family: 'Trocchi', serif;
+     font-size: 15px;
+    font-weight: normal;
+    line-height: 38px; margin: 0; }
+
+    strong { color: #000000;
+        font-family: 'Trocchi', serif;
+        font-size: 20px;
+        font-weight: 45px;
+        line-height: 38px; margin: 0; }

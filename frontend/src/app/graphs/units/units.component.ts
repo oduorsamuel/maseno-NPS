@@ -9,7 +9,7 @@ import { Chart } from 'chart.js';
   styleUrls: ['./units.component.css']
 })
 export class UnitsComponent implements OnInit {
-  unitCode:any;
+  unitCode="CIT 101";
   chart=[]
   public comments;
 
