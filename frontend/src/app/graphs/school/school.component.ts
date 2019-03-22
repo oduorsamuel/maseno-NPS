@@ -12,6 +12,7 @@ export class SchoolComponent implements OnInit {
 chart= [];
 public school;
 public total_response;
+public students;
 
   constructor(private httpservice:HttpService, private router:Router) { }
 
@@ -36,6 +37,7 @@ public total_response;
       }
       console.log(response);
       var total_response=response.school.length;
+      this.students=total_response;
       var s=response.school;
 
       var filter={

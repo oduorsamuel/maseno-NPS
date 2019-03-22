@@ -2,7 +2,7 @@
 <br>
 <div class="container">
 <div class="jumbotron" style="text-align:center">
-    <strong>Graph showing how likely student would recommend School of Computing to a friend or colleague</strong>
+    <strong *ngIf="students">Graph showing how likely student would recommend School of Computing to a friend or colleague,results from {{students}} respondents</strong>
 </div>
 <div class="margin">
     <div class="center" *ngIf="chart">
