@@ -73,6 +73,7 @@ export class ClassroomComponent implements OnInit {
   
       var nps=difference*100/classroom_response_count;
       console.log(nps);
+      var score=Math.round(nps) +'%';
 
       this.chart= new Chart ('canvas',{
         type:'bar',
@@ -81,7 +82,7 @@ export class ClassroomComponent implements OnInit {
           datasets:[
             {
             data:[nps,0],
-            label:'score%',
+            label:[score],
             borderColor:'#3aaa9f',
             backgroundColor:'#ff4081',
             fill: false

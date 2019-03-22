@@ -74,6 +74,7 @@ export class UnitsComponent implements OnInit {
   
       var nps=difference*100/number_of_respondents;
       console.log(nps);
+      var score=Math.round(nps) +'%';
 
       //drawing Graph
       this.chart= new Chart ('canvas',{
@@ -83,7 +84,7 @@ export class UnitsComponent implements OnInit {
           datasets:[
             {
             data:[nps,0],
-            label:'score%',
+            label:[score],
             borderColor:'#3aaa9f',
             backgroundColor:'#ff4081',
             fill: false

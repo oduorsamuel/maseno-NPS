@@ -60,6 +60,7 @@ public total_response;
   
       var nps=difference*100/total_response;
       console.log(nps);
+      var score=Math.round(nps) +'%';
       this.chart= new Chart ('canvas',{
         type:'bar',
         data:{
@@ -67,7 +68,7 @@ public total_response;
           datasets:[
             {
             data:[nps,0],
-            label:'score%',
+            label:[score],
             borderColor:'#3aaa9f',
             backgroundColor:'#ff4081',
             fill: false
