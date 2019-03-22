@@ -1,12 +1,9 @@
 <app-admin-nav>
-<br>
-<br>
 <div class="container">
 <div class="jumbotron" style="text-align: center">
-  <strong> Graph showing NPS  rate for the classroom facilities offered by the school</strong>
+  <strong *ngIf="students"> Graph showing NPS  rate for the classroom facilities offered by the school, {{students}} students participated</strong>
 </div>
 <div class="margin">
-   <br>
     <div class="center" *ngIf="chart">
         <canvas id="canvas">{{chart}}</canvas>
       </div>

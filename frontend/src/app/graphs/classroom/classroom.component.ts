@@ -11,6 +11,7 @@ import {Router} from '@angular/router'
 export class ClassroomComponent implements OnInit {
   chart=[]
   public comments;
+  public students;
 
   constructor(private httpservice: HttpService, private router:Router) { }
 
@@ -44,6 +45,7 @@ export class ClassroomComponent implements OnInit {
   
       var classroom_response=response.classroom;
       var classroom_response_count=classroom_response.length;
+      this.students=classroom_response_count;
       console.log(classroom_response_count)
   
   

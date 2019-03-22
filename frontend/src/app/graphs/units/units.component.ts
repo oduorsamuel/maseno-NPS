@@ -12,6 +12,7 @@ export class UnitsComponent implements OnInit {
   unitCode="CIT 101";
   chart=[]
   public comments;
+  public students;
 
   constructor(private httpservice: HttpService) { }
 
@@ -46,6 +47,7 @@ export class UnitsComponent implements OnInit {
 
       //counting total number of student who participated in the survey
       var number_of_respondents=filter.unit.length;
+      this.students=number_of_respondents;
       console.log(number_of_respondents);
 
      //separating promoters from detractors

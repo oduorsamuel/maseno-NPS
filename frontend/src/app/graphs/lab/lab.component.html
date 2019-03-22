@@ -1,9 +1,7 @@
 <app-admin-nav>
-<br>
-<br>
 <div class="container">
 <div class="jumbotron" style="text-align: center">
-        <strong> Graph showing NPS for the overall effectiveness of lab Equipments </strong>
+        <strong *ngIf="students"> Graph showing NPS for the overall effectiveness of lab Equipments, {{students}} students participated in the survey</strong>
 </div>
 <div class="margin">
     <div class="center" *ngIf="chart">

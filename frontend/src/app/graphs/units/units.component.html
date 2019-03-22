@@ -7,10 +7,8 @@
       </form>
   </div>
 </div>
-<br>
 <div class="margin">
-   <h3 > Graph showing NPS  For The Selected Unit</h3>
-   <br>
+   <h3 *ngIf="students" > Graph showing NPS  For The Selected Unit, {{students}} students participated in the survey</h3>
     <div class="center" *ngIf="chart">
         <canvas id="canvas">{{chart}}</canvas>
         <div class="col-xs-12 col-sm-12 col-md-12" >

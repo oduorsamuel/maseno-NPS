@@ -10,6 +10,7 @@ import {Chart} from 'chart.js';
 export class LabComponent implements OnInit {
   public comments;
   chart=[]
+  public students;
 
   constructor(private httpservice:HttpService) { }
 
@@ -42,6 +43,7 @@ export class LabComponent implements OnInit {
   
       var lab_response=response.lab;
       var lab_response_count=lab_response.length;
+      this.students=lab_response_count;
       console.log(lab_response_count)
   
   
