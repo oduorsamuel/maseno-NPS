@@ -102,7 +102,7 @@ module.exports = { routesFxn: (connection, validate) => [
           (res, reject)=>{
             connection.query("insert into units(departmentId, programId, year,semester,unitCode, unitName) VALUES('"+department+"','"+program+"','"+year+"', '"+semester+"',  '"+unitCode+"','"+unitName+"')",(err,result,fields)=>{
               if(err){
-                reject(err);
+                reject(err)
               }
               if(result){
                 res({"Success":"Submission successful"})

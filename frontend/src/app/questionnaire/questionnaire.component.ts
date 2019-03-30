@@ -23,7 +23,8 @@ export class QuestionnaireComponent implements OnInit {
   }
 
   onSurveyDone(response) {
-    const date = new Date().toISOString().slice(0, 10);
+    // const date = new Date().toISOString().slice(0, 10);
+    const date = new Date().getFullYear();
 
     this.route.params.subscribe((params) => {
       const encounterInfo = {
@@ -34,6 +35,7 @@ export class QuestionnaireComponent implements OnInit {
         'yearOfStudy':params.year,
         'programId': params.program,
       };
+      console.log(encounterInfo);
       const toServer = {
         'encounterInfo': encounterInfo,
         'responseInfo': response

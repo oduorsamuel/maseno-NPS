@@ -4,7 +4,7 @@
       <div class="col-md-2"></div>
       <div class="col-md-6">
         <div style="color: green" *ngIf="showAlert">Unit Added Successfully</div>
-        <br>
+        
         <form class="" (ngSubmit)="addUnit()" #addform="ngForm">
           <div class="form_group">
             <label>Department</label>
@@ -12,14 +12,14 @@
               <option *ngFor="let department of departments" [value]="department.departmentId">{{department.departmentName}}</option>
             </select>
           </div>
-          <br>
+          
           <div class="form_group">
             <label>Program</label>
             <select class="form-control" id="Program" [(ngModel)]="model.program" name="program" required>
               <option *ngFor="let program of programs" [value]="program.programId">{{program.programName}}</option>
             </select>
           </div>
-          <br>
+          
           <div class="form_group">
             <label>Year</label>
             <select class="form-control" id="year" [(ngModel)]="model.year" name="year" required>
@@ -29,7 +29,7 @@
               <option>4</option>
             </select>
           </div>
-          <br>
+          
           <div class="form_group">
             <label>Semester</label>
             <select class="form-control" id="semester" [(ngModel)]="model.semester" name="semester" required>
@@ -37,24 +37,24 @@
               <option>2</option>>
             </select>
           </div>
-          <br>
+          
           <div class="form-group">
             <label class="">Unit Code</label>
             <input type="text" class="form-control" name="unitCode" [(ngModel)]="model.unitCode" required #unitName="ngModel" placeholder="Enter Unit code"
               #unitCode>
           </div>
-          <br>
+          
           <div class="form-group">
             <label class="">Unit Name</label>
             <input type="text" class="form-control" name="unitName" [(ngModel)]="model.unitName" required #unitName="ngModel" placeholder="Enter Unit Name"
               #unitName>
           </div>
           <button type="submit" class="btn btn-primary" [disabled]="!addform.form.valid">Add Unit</button>
-          <br>
+          
           <a routerLink="../listUnits" class="pull-right">View</a>
         </form>
-        <br>
-        <br>
+        
+        
       </div>
     </div>
   </div>
