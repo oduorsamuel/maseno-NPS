@@ -12,6 +12,7 @@ export class AdminProgramComponent implements OnInit {
   public programs;
   public departments;
   showAlert=false;
+  serverErrorMessages: boolean;
   model = {department:'',programId:'', programName:''}
   constructor(private adminservice:AdminService, private router:Router) { }
 
@@ -20,16 +21,17 @@ export class AdminProgramComponent implements OnInit {
     this.getDepartments();
   }
   addProgram(){
-    this.adminservice.addProgram(this.model).subscribe(
-      (Programs)=>{
-       if(Programs!=null)
-       console.log(Programs);
-       this.showAlert=true
-       this.router.navigate(['/listPrograms'])
-       },
-       function (error){console.log("error"+error)},
-       function(){console.log("subscription done")}
-    );
+    this.adminservice.addProgram(this.model).subscribe((res)=>{
+      if(res['_body']==="ER_DUP_ENTRY"){
+   
+      this.serverErrorMessages=true;
+      setTimeout(() => this.serverErrorMessages = false, 4000);
+      }
+      else{
+        this.router.navigate(['../listPrograms']) 
+      }
+      console.log(res);
+     });
 
 }
 getPrograms(){

@@ -8,7 +8,7 @@
   </div>
 </div>
 <div class="margin">
-   <h3 *ngIf="students" > Graph showing NPS  For The Selected Unit, {{students}} students participated in the survey</h3>
+   <h3 *ngIf="students" > Graph showing NPS  For <b *ngIf="unitCode">{{unitCode}}</b>, {{students}} students participated in the survey</h3>
     <div class="center" *ngIf="chart">
         <canvas id="canvas">{{chart}}</canvas>
         <div class="col-xs-12 col-sm-12 col-md-12" >
@@ -17,7 +17,7 @@
       </div>
       <br><br>
       
-    <h3>Students comments</h3>
+    <b *ngIf="unitCode">Students comments for {{unitCode}}</b>
 <div class="center" *ngFor="let comment of comments">
     <li>{{comment}}</li>
 </div>

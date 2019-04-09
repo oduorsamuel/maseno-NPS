@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-6">
-        <div style="color: green" *ngIf="showAlert">Unit Added Successfully</div>
+        <div style="color: red" *ngIf="serverErrorMessages">The Unit already exist</div>
         
         <form class="" (ngSubmit)="addUnit()" #addform="ngForm">
           <div class="form_group">

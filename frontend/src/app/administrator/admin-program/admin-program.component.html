@@ -4,6 +4,7 @@
       <div class="col-md-2"></div>
       <div class="col-md-6">
         <div style="color: green" *ngIf="showAlert">Program Added Successfully</div>
+        <div style="color: red" *ngIf="serverErrorMessages">Program with that ID already exist</div>
         <br>
         <form class="" (ngSubmit)="addProgram()" #addform="ngForm">
           <div class="form_group">

@@ -10,11 +10,12 @@
   "author": "oduorsamuel",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "hapi": "^17.5.2",
     "hapi-auth-basic": "^5.0.0",
+    "hapi-boom-decorators": "^4.1.2",
     "inert": "^5.1.0",
     "mysql": "^2.15.0",
-    "bcrypt": "^2.0.1",
     "request": "^2.87.0"
   },
   "devDependencies": {

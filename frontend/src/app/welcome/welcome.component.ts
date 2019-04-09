@@ -7,12 +7,17 @@ import {Router, ActivatedRoute} from '@angular/router';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
+  public unit;
 
 
   constructor(private router: Router,
               private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.route.params.subscribe(response=>{
+      this.unit=response.unit;
+      console.log(response);
+     })
   }
 
   onStart() {

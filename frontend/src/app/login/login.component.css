@@ -72,3 +72,6 @@ button.btn-primary  {
   background: url('/assets/logo.png') no-repeat center center;
   background-size: contain;
 }
+html {
+  background-color: #56baed;
+}

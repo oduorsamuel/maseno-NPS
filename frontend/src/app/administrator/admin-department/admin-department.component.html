@@ -4,6 +4,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-6">
       <div style="color: green" *ngIf="showAlert">Department Added Successfully</div>
+      <div style="color: red" *ngIf="serverErrorMessages">Department with that ID already exist</div>
       <br>
       <form class="form" (ngSubmit)="addDepartment()" #addform="ngForm">
         <div class="form-group">

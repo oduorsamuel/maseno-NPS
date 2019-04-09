@@ -14,6 +14,8 @@ export class AdminUnitComponent implements OnInit {
   public programs;
   showAlert=false;
   model={department:'', program:'', year:'', unitCode:'',unitName:'',programId:''}
+  showSucessMessage: boolean;
+  serverErrorMessages: boolean;
   constructor(private adminservice:AdminService, private router:Router) { }
 
   ngOnInit() {
@@ -23,17 +25,35 @@ export class AdminUnitComponent implements OnInit {
   }
 
   addUnit(){
-    this.adminservice.addUnit(this.model).subscribe(
-      (units)=>{
-       if(units!=null)
-       console.log(units);
-       this.showAlert=true
-       this.router.navigate(['/listUnits'])
-       },
-       function (error){console.log("error"+error)},
-       function(){console.log("subscription done")}
-    );
-  }
+    this.adminservice.addUnit(this.model).subscribe((res)=>{
+      if(res['_body']==="ER_DUP_ENTRY"){
+   
+      this.serverErrorMessages=true;
+      setTimeout(() => this.serverErrorMessages = false, 4000);
+      }
+      else{
+        this.router.navigate(['../listUnits']) 
+      }
+      console.log(res);
+     });
+    }
+  
+
+// addUnit() {
+//   this.adminservice.addUnit(this.model).subscribe(
+//     res => {
+//       this.showSucessMessage = true;
+//       setTimeout(() => this.showSucessMessage = false, 4000);
+//     },
+//     err => {
+//       if (err.status === 422) {
+//         this.serverErrorMessages = err.error.join('<br/>');
+//       }
+//       else
+//         this.serverErrorMessages = 'Something went wrong.Please contact admin.';
+//     }
+//   );
+// }
 
 getUnits(){
   return this.adminservice.getUnits().subscribe((results)=>{

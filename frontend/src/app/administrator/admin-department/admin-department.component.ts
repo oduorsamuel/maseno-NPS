@@ -12,6 +12,7 @@ import {Response} from '@angular/http'
 export class AdminDepartmentComponent implements OnInit {
 public departments;
 showAlert = false;
+serverErrorMessages: boolean;
 model={departmentId:'', departmentName:'',}
 isplayedColumn= ['departmentId','departmentName','action']
 
@@ -21,16 +22,17 @@ isplayedColumn= ['departmentId','departmentName','action']
   }
 
   addDepartment(){
-    this.adminservice.addDepartment(this.model).subscribe(
-      (departments)=>{
-       if(departments!=null)
-       console.log(departments);
-       this.showAlert = true;
-       this.router.navigate(['/listDepartments'])
-       },
-       function (error){console.log("error"+error)},
-       function(){console.log("subscription done")}
-    );
+    this.adminservice.addDepartment(this.model).subscribe((res)=>{
+      if(res['_body']==="ER_DUP_ENTRY"){
+   
+      this.serverErrorMessages=true;
+      setTimeout(() => this.serverErrorMessages = false, 4000);
+      }
+      else{
+        this.router.navigate(['../listDepartments']) 
+      }
+      console.log(res);
+     });
 
 }
 

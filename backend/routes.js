@@ -2,6 +2,7 @@
 
 const SURVEYFILE = './surveys.json';
 const request = require('request');
+const Boom = require('boom');
 
 // builds a query to insert appropriate number of rows into surveyResponse table
 const surveyResponse_query_constructor = (studentResponse, surveyEncounterId) => {
@@ -53,7 +54,7 @@ module.exports = { routesFxn: (connection, validate) => [
 
                 connection.query("INSERT INTO departments(departmentId, departmentName) VALUES ('" + departmentId + "','" + departmentName + "')", (err, result, fields) => {
                     if (err) {
-                        reject(err);
+                      res(err.code)
                     }
                     if (result) {
                         res({ "success": "Submission is successful" });
@@ -75,7 +76,7 @@ module.exports = { routesFxn: (connection, validate) => [
           (res, reject)=>{
           connection.query("insert into programs(departmentId,programId, ProgramName) VALUES('"+department+"','"+programId+"','"+programName+"')",(err,result,fields)=>{
             if(err){
-              reject(err);
+              res(err.code)
             }
             if(result){
               res({ "Success":"Submission Successful"});
@@ -102,13 +103,10 @@ module.exports = { routesFxn: (connection, validate) => [
           (res, reject)=>{
             connection.query("insert into units(departmentId, programId, year,semester,unitCode, unitName) VALUES('"+department+"','"+program+"','"+year+"', '"+semester+"',  '"+unitCode+"','"+unitName+"')",(err,result,fields)=>{
               if(err){
-                reject(err)
-              }
-              if(result){
-                res({"Success":"Submission successful"})
+                res(err.code)
               }
               else{
-                res({"Failure":"Submission Unsuccessful"})
+                res({"Success":"Submission successful"})
               }
             })
           }
