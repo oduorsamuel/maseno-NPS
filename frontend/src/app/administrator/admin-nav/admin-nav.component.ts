@@ -14,9 +14,9 @@ export class AdminNavComponent implements DoCheck {
   showNavbar = false;
 
   constructor(private router: Router,
-              private httpService: HttpService,
-              private breakpointObserver: BreakpointObserver) {}
-              isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
+    private httpService: HttpService,
+    private breakpointObserver: BreakpointObserver) { }
+  isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
 
   onLogout() {
     this.httpService.logout().subscribe();

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin.service';
-import { Attributes} from '../response';
-import {Router} from '@angular/router'
+import { Attributes } from '../response';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-list-units',
@@ -11,22 +11,22 @@ import {Router} from '@angular/router'
 export class ListUnitsComponent implements OnInit {
   public units;
 
-  constructor(private adminservice:AdminService, private router:Router) { }
+  constructor(private adminservice: AdminService, private router: Router) { }
 
   ngOnInit() {
     this.getUnits();
   }
-  getUnits(){
-    return this.adminservice.getUnits().subscribe((results)=>{
-      this.units=results.json();
+  getUnits() {
+    return this.adminservice.getUnits().subscribe((results) => {
+      this.units = results.json();
     })
   }
 
   deleteUnit(unitCode) {
-    if(confirm("Are you sure to delete "+unitCode)) {
-      return this.adminservice.deleteUnit(unitCode).subscribe(()=>{
+    if (confirm("Are you sure to delete " + unitCode)) {
+      return this.adminservice.deleteUnit(unitCode).subscribe(() => {
         this.getUnits();
-        })
+      })
     }
   }
 

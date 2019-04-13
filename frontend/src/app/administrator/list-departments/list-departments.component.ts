@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AdminService} from '../admin.service'
-import {Departments} from '../response'
+import { AdminService } from '../admin.service'
+import { Departments } from '../response'
 import { Router } from '@angular/router';
-import {Response} from '@angular/http';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-list-departments',
@@ -12,23 +12,23 @@ import {Response} from '@angular/http';
 export class ListDepartmentsComponent implements OnInit {
   public departments;
 
-  constructor(private adminservice:AdminService, private router:Router) { }
+  constructor(private adminservice: AdminService, private router: Router) { }
 
   ngOnInit() {
     this.getDepartments();
   }
 
-  getDepartments(){
-    return this.adminservice.getDepartments().subscribe((results:Response)=>{
-      this.departments=results.json()
+  getDepartments() {
+    return this.adminservice.getDepartments().subscribe((results: Response) => {
+      this.departments = results.json()
     })
   }
-  
-  deleteDepartment(departmentId){
-    if(confirm("Are you sure you want do delete department with id "+departmentId)){
-      return this.adminservice.deleteDepartment(departmentId).subscribe(()=>{
+
+  deleteDepartment(departmentId) {
+    if (confirm("Are you sure you want do delete department with id " + departmentId)) {
+      return this.adminservice.deleteDepartment(departmentId).subscribe(() => {
         this.getDepartments()
-        })
+      })
     }
 
   }

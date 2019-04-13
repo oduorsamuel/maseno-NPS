@@ -12,8 +12,8 @@ export class QuestionnaireComponent implements OnInit {
   json: JSON;
 
   constructor(private httpService: HttpService,
-              private router: Router,
-              private route: ActivatedRoute) {}
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.httpService.getSurveys().subscribe(
@@ -28,11 +28,11 @@ export class QuestionnaireComponent implements OnInit {
 
     this.route.params.subscribe((params) => {
       const encounterInfo = {
-        'departmentId':params.department,
+        'departmentId': params.department,
         'date': date,
-        'semester':params.semester,
-        'unitCode':params.unit,
-        'yearOfStudy':params.year,
+        'semester': params.semester,
+        'unitCode': params.unit,
+        'yearOfStudy': params.year,
         'programId': params.program,
       };
       console.log(encounterInfo);
@@ -45,8 +45,8 @@ export class QuestionnaireComponent implements OnInit {
     });
 
     this.router.navigate(['../success'],
-                         { relativeTo: this.route }
-                        );
+      { relativeTo: this.route }
+    );
   }
 
 }

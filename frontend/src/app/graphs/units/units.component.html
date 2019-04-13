@@ -1,25 +1,38 @@
 <app-admin-nav>
-<div class="container">
-  <div class="jumbotron">
-      <form class="form-inline my-2 my-lg-0" #form="ngForm">
-          <input class="form-control mr-sm-2" type="search" name="unitCode"  placeholder="Search Unit" aria-label="Search" [(ngModel)]="unitCode">
-          <button class="btn btn-outline-info active my-2 my-sm-0" type="submit" (click)="getUnits(unitCode)" >Search unit</button>
-      </form>
-  </div>
-</div>
-<div class="margin">
-   <h3 *ngIf="students" > Graph showing NPS  For <b *ngIf="unitCode">{{unitCode}}</b>, {{students}} students participated in the survey</h3>
-    <div class="center" *ngIf="chart">
-        <canvas id="canvas">{{chart}}</canvas>
-        <div class="col-xs-12 col-sm-12 col-md-12" >
-                <a class="pull-left" routerLink="../classroom">Previous</a>
-              </div>
-      </div>
-      <br><br>
-      
-    <b *ngIf="unitCode">Students comments for {{unitCode}}</b>
-<div class="center" *ngFor="let comment of comments">
-    <li>{{comment}}</li>
-</div>
-</div>
+    <div class="container">
+        <div class="jumbotron">
+            <form class="form-inline my-2 my-lg-0" #form="ngForm">
+                <input class="form-control mr-sm-2" type="search" name="unitCode" placeholder="Search Unit" aria-label="Search" [(ngModel)]="unitCode">
+                <button class="btn btn-outline-info active my-2 my-sm-0" type="submit" (click)="getUnits(unitCode)">Search unit</button>
+            </form>
+        </div>
+        <a class="space" routerLink="../classroom">Previous</a>
+        <a class="space" value="CPTURE" (click)="captureScreen()">Print</a>
+
+    </div>
+    <div id="contentToConvert">
+        <div class="margin">
+            <h3 *ngIf="students"> Graph showing NPS For
+                <b *ngIf="unitCode">{{unitCode}}</b>, {{students}} students participated in the survey</h3>
+            <div class="center" *ngIf="chart">
+                <canvas id="canvas">{{chart}}</canvas>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+
+                </div>
+            </div>
+            <br>
+            <br>
+            <b>Based on global NPS standards</b>
+            <ul>
+                <li>NPS above 0 is considered “good”, </li>
+                <li>+50 is “Excellent,” </li>
+                <li>above 70 is considered “world class.” </li>
+            </ul>
+
+            <b *ngIf="unitCode">Students comments for {{unitCode}}</b>
+            <div class="center" *ngFor="let comment of comments">
+                <li>{{comment}}</li>
+            </div>
+        </div>
+    </div>
 </app-admin-nav>

@@ -1,16 +1,26 @@
 <app-admin-nav>
-<br>
-<div class="container">
-<div class="jumbotron" style="text-align:center">
-    <strong *ngIf="students">Graph showing how likely student would recommend School of Computing to a friend or colleague,results from {{students}} respondents</strong>
-</div>
-<div class="margin">
-    <div class="center" *ngIf="chart">
-        <canvas id="canvas">{{chart}}</canvas>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-12" >
-        <a type="button" class="pull-right" routerLink="../lab">Labaratory>></a>
-      </div>
-</div>
-</div>
+    <br>
+    <div class="container">
+        <div class="jumbotron" style="text-align:center">
+            <strong *ngIf="students">Graph showing how likely student would recommend School of Computing to a friend or colleague,results from {{students}}
+                respondents</strong>
+        </div>
+        <a type="button" routerLink="../lab">Labaratory>></a>
+        <br><br>
+        <div class="margin">
+            <div class="center" *ngIf="chart">
+                <canvas id="canvas">{{chart}}</canvas>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+            </div>
+            <br>
+            <b>Based on global NPS standards</b>
+            <ul>
+                <li>NPS above 0 is considered “good”, </li>
+                <li>+50 is “Excellent,” </li>
+                <li>above 70 is considered “world class.” </li>
+            </ul>
+        </div>
+    </div>
 </app-admin-nav>

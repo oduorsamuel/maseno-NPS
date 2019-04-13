@@ -13,7 +13,6 @@ import {AdminDepartmentComponent} from './administrator/admin-department/admin-d
 import { ProgramComponent } from './program/program.component';
 import { AdminUnitComponent } from './administrator/admin-unit/admin-unit.component';
 import { AdminProgramComponent } from './administrator/admin-program/admin-program.component';
-import { DashboardComponent } from './administrator/dashboard/dashboard.component';
 import { YearComponent } from './year/year.component';
 import { SemesterComponent } from './semester/semester.component';
 import { UnitComponent } from './unit/unit.component';
@@ -95,12 +94,6 @@ const appRoutes = [
   {
     path: 'adminProgram',
     component: AdminProgramComponent,
-    canActivate: [AuthGuard]
-    
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
     canActivate: [AuthGuard]
     
   },

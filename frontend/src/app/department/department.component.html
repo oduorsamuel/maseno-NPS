@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container">
   <div class="row">
-    <div class="input-group" style="margin-left: 1em">      
+    <div class="input-group" style="margin-left: 1em">
       <select id="exampleFormControlSelect1" #department>
         <option selected disabled>Select Department</option>
         <option *ngFor="let department of departmentArray">{{ department.departmentName }}</option>

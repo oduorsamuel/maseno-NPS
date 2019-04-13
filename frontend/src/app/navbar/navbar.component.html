@@ -4,10 +4,10 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu" [overlapTrigger]="false">
-        <a routerLink="/school" mat-menu-item>
+        <span routerLink="/school" mat-menu-item>
           <mat-icon>view_list</mat-icon>
           <span>Staff Panel</span>
-        </a>
+        </span>
       <button mat-menu-item (click)="onLogout()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>

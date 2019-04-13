@@ -25,7 +25,6 @@ import { AdminDepartmentComponent } from './administrator/admin-department/admin
 import { AdminProgramComponent } from './administrator/admin-program/admin-program.component';
 import { AdminUnitComponent } from './administrator/admin-unit/admin-unit.component';
 import { AdminService } from './administrator/admin.service';
-import { DashboardComponent } from './administrator/dashboard/dashboard.component';
 import { YearComponent } from './year/year.component';
 import { SemesterComponent } from './semester/semester.component';
 import { SchoolComponent } from './graphs/school/school.component';
@@ -38,7 +37,7 @@ import { UnitsComponent } from './graphs/units/units.component';
 import { ListUnitsComponent } from './administrator/list-units/list-units.component';
 import { ListDepartmentsComponent } from './administrator/list-departments/list-departments.component';
 import { ListProgramsComponent } from './administrator/list-programs/list-programs.component';
-import { DialogComponent } from './administrator/dialog/dialog.component';
+
 
 
 
@@ -56,7 +55,6 @@ import { DialogComponent } from './administrator/dialog/dialog.component';
     AdminDepartmentComponent,
     AdminProgramComponent,
     AdminUnitComponent,
-    DashboardComponent,
     YearComponent,
     SemesterComponent,
     SchoolComponent,
@@ -69,7 +67,6 @@ import { DialogComponent } from './administrator/dialog/dialog.component';
     ListUnitsComponent,
     ListDepartmentsComponent,
     ListProgramsComponent,
-    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +96,7 @@ import { DialogComponent } from './administrator/dialog/dialog.component';
     MatSidenavModule,
     MatListModule,
   ],
-  entryComponents:[DialogComponent],
+  entryComponents:[],
   providers: [HttpService, AuthGuard,AdminService],
   bootstrap: [AppComponent]
 })

@@ -1,22 +1,48 @@
 <app-admin-nav>
-<div class="container">
-<div class="jumbotron" style="text-align: center">
-  <strong *ngIf="students"> Graph showing NPS  rate for the classroom facilities offered by the school, {{students}} students participated</strong>
-</div>
-<div class="margin">
-    <div class="center" *ngIf="chart">
-        <canvas id="canvas">{{chart}}</canvas>
+  <div class="container">
+    <button mat-raised-button color="primary" [matMenuTriggerFor]="Asset">Manage Report</button>
+    <mat-menu #Asset="matMenu">
+      <button mat-menu-item>
+        <span value="CPTURE" (click)="captureScreen()">Print Hall Report</span>
+      </button>
+      <button mat-menu-item>
+        <span routerLink="../lab">Lab NPS</span>
+      </button>
+      <button mat-menu-item>
+        <span routerLink="../units">Units NPS Report</span>
+      </button>
+    </mat-menu>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="contentToConvert">
+      <div class="" style="text-align: center">
+        <strong *ngIf="students"> Graph showing NPS rate for the classroom facilities offered by the school, {{students}} students participated</strong>
       </div>
-      <div class="col-xs-12 col-sm-12 col-md-12" >
-        <a class="pull-left" routerLink="../lab">Previous</a>
-        <a class="pull-right" routerLink="../units">Units</a>
+      <div class="margin">
+        <div class="center" *ngIf="chart">
+          <canvas id="canvas">{{chart}}</canvas>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <b>Based on global NPS standards</b>
+        <ul>
+          <li>NPS above 0 is considered “good”, </li>
+          <li>+50 is “Excellent,” </li>
+          <li>above 70 is considered “world class.” </li>
+        </ul>
+        <br>
+        <b *ngIf="students">Comments from {{students}} students</b>
+        <br>
+        <div class="center horizontal" *ngFor="let comment of comments">
+          {{comment}},
+        </div>
       </div>
-</div>
-<div class="jumbotron" style="text-align: center">
-  <strong>Students Observations</strong>
-</div>
-<div class="center" *ngFor="let comment of comments">
-    <li>{{comment}}</li>
-</div>
-</div>
+    </div>
+  </div>
 </app-admin-nav>
