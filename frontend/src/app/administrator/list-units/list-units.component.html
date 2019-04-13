@@ -13,11 +13,11 @@
               <td>{{unit.unitCode}}</td>
               <td>{{unit.unitName}}</td>
               <td>
-                <a (click)='deleteUnit(unit.unitCode)' type="button" style="color: red" aria-label="Left Align">
+                <button (click)='deleteUnit(unit.unitCode)' type="button">Delete
       
-                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  <!-- <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> -->
       
-                </a>
+                </button>
               </td>
             </tr>
           </tbody>

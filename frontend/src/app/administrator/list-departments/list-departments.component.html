@@ -6,7 +6,6 @@
               <th>ID</th>
               <th>Department Name</th>
               <th>Action</th>
-              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -14,14 +13,11 @@
               <td>{{department.departmentId}}</td>
               <td>{{department.departmentName}}</td>
               <td>
-                <a routerLink="/units" style="color:blue;">Edit</a>
-              </td>
-              <td>
-                <a (click)='deleteDepartment(department.departmentId)' type="button" style="color: red" aria-label="Left Align">
+                <button (click)='deleteDepartment(department.departmentId)' type="button">
        
-                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  delete
                    
-                </a>
+                </button>
               </td>
             </tr>
           </tbody>

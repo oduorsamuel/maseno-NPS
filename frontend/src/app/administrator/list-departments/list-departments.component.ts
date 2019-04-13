@@ -25,9 +25,12 @@ export class ListDepartmentsComponent implements OnInit {
   }
   
   deleteDepartment(departmentId){
-    return this.adminservice.deleteDepartment(departmentId).subscribe(()=>{
-    this.getDepartments()
-    })
+    if(confirm("Are you sure you want do delete department with id "+departmentId)){
+      return this.adminservice.deleteDepartment(departmentId).subscribe(()=>{
+        this.getDepartments()
+        })
+    }
+
   }
 
 }

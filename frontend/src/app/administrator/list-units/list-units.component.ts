@@ -22,10 +22,12 @@ export class ListUnitsComponent implements OnInit {
     })
   }
 
-  deleteUnit(unitCode){
-    return this.adminservice.deleteUnit(unitCode).subscribe(()=>{
-    this.getUnits();
-    })
+  deleteUnit(unitCode) {
+    if(confirm("Are you sure to delete "+unitCode)) {
+      return this.adminservice.deleteUnit(unitCode).subscribe(()=>{
+        this.getUnits();
+        })
+    }
   }
 
 }

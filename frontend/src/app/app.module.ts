@@ -38,6 +38,7 @@ import { UnitsComponent } from './graphs/units/units.component';
 import { ListUnitsComponent } from './administrator/list-units/list-units.component';
 import { ListDepartmentsComponent } from './administrator/list-departments/list-departments.component';
 import { ListProgramsComponent } from './administrator/list-programs/list-programs.component';
+import { DialogComponent } from './administrator/dialog/dialog.component';
 
 
 
@@ -67,7 +68,8 @@ import { ListProgramsComponent } from './administrator/list-programs/list-progra
     UnitsComponent,
     ListUnitsComponent,
     ListDepartmentsComponent,
-    ListProgramsComponent
+    ListProgramsComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -97,6 +99,7 @@ import { ListProgramsComponent } from './administrator/list-programs/list-progra
     MatSidenavModule,
     MatListModule,
   ],
+  entryComponents:[DialogComponent],
   providers: [HttpService, AuthGuard,AdminService],
   bootstrap: [AppComponent]
 })

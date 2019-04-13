@@ -23,10 +23,12 @@ constructor(private adminservice:AdminService, private router:Router) { }
   }
 
   deleteProgram(programId){
-    return this.adminservice.deleteProgram(programId).subscribe(()=>{
-      this.getPrograms();
+    if(confirm("Are you sure you want to delete program with Id "+programId)){
+      return this.adminservice.deleteProgram(programId).subscribe(()=>{
+        this.getPrograms();
+      })
+    }
 
-    })
   }
 
 }

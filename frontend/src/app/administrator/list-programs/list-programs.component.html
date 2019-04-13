@@ -13,11 +13,11 @@
               <td>{{program.programId}}</td>
               <td>{{program.programName}}</td>
               <td>
-                <a (click)='deleteProgram(program.programId)' type="button" style="color: red" aria-label="Left Align">
+                <button (click)='deleteProgram(program.programId)' type="button">
       
-                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  delete
       
-                </a>
+                </button>
               </td>
             </tr>
           </tbody>
